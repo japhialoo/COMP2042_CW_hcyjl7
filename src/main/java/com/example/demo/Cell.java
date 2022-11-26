@@ -12,14 +12,29 @@ public class Cell {
     private Text textClass;
     private boolean modify = false;
 
+    /**
+     *
+     * @param modify boolean value for if the cell was modified during an action.
+     */
     void setModify(boolean modify) {
         this.modify = modify;
     }
 
+    /**
+     *
+     * @return Returns a boolean value to determine if the cell has been modified.
+     */
     boolean getModify() {
         return modify;
     }
 
+    /**
+     *
+     * @param x sets the scale for the x-axis of the cell
+     * @param y sets the scale for the y-axis of the cell
+     * @param scale scales the x-axis and y-axis accordingly
+     * @param root
+     */
     Cell(double x, double y, double scale, Group root) {
         rectangle = new Rectangle();
         rectangle.setX(x);
@@ -36,6 +51,10 @@ public class Cell {
         this.textClass = textClass;
     }
 
+    /**
+     *
+     * @param cell
+     */
     void changeCell(Cell cell) {
         TextMaker.changeTwoText(textClass, cell.getTextClass());
         root.getChildren().remove(cell.getTextClass());
@@ -96,7 +115,9 @@ public class Cell {
                 break;
             case 2048:
                 rectangle.setFill(Color.rgb(250,0,0,1));
-
+                break;
+            default:
+                rectangle.setFill(Color.rgb(0,0,0,0));
 
         }
 

@@ -5,8 +5,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+/**
+ * I'm not too sure what's the purpose of this class other than to get text and set font sizes
+ */
 class TextMaker {
     private static TextMaker singleInstance = null;
+    private double length = GameScene.getLENGTH();
+    private double fontSize = (3 * length) / 7.0;
 
     private TextMaker() {
 
@@ -18,9 +23,15 @@ class TextMaker {
         return singleInstance;
     }
 
+    /**
+     *
+     * @param input
+     * @param xCell
+     * @param yCell
+     * @param root
+     * @return
+     */
     Text madeText(String input, double xCell, double yCell, Group root) {
-        double length = GameScene.getLENGTH();
-        double fontSize = (3 * length) / 7.0;
         Text text = new Text(input);
         text.setFont(Font.font(fontSize));
         text.relocate((xCell + (1.2)* length / 7.0), (yCell + 2 * length / 7.0));
@@ -29,6 +40,11 @@ class TextMaker {
         return text;
     }
 
+    /**
+     * swapping the text of the first cell with the text of the second cell
+     * @param first Text of first cell to be swapped
+     * @param second Text of second cell to be swapped
+     */
     static void changeTwoText(Text first, Text second) {
         String temp;
         temp = first.getText();

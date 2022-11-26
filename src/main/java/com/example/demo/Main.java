@@ -64,7 +64,7 @@ public class Main extends Application {
         Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
         setGameScene(gameScene);
         primaryStage.setScene(gameScene);
-        GameScene game = new GameScene();
+        TestScene game = new TestScene();
         game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot);
 
         primaryStage.show();
