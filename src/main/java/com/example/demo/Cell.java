@@ -34,7 +34,7 @@ public class Cell {
      * @param x sets the scale for the x-axis of the cell
      * @param y sets the scale for the y-axis of the cell
      * @param scale scales the x-axis and y-axis accordingly
-     * @param root
+     * @param root Unsure what is the root for
      */
     Cell(double x, double y, double scale, Group root) {
         rectangle = new Rectangle();
@@ -54,7 +54,7 @@ public class Cell {
 
     /**
      *
-     * @param cell
+     * @param cell Individual cell to be swapped with current cell.
      */
     void changeCell(Cell cell) {
         TextMaker.changeTwoText(textClass, cell.getTextClass());
@@ -118,7 +118,7 @@ public class Cell {
                 rectangle.setFill(Color.rgb(250,0,0,1));
                 break;
             default:
-                rectangle.setFill(Color.rgb(0,0,0,0));
+                rectangle.setFill(Color.rgb(0,0,0,1));
 
         }
 

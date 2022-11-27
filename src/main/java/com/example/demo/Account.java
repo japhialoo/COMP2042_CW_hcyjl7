@@ -11,13 +11,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Account implements Comparable<Account> {
-    private long score = 0;
+    public static long score = 0;
     private String userName ;
     private static ArrayList<Account> accounts = new ArrayList<>();
 
-    public Account(String userName){
-        this.userName=userName;
-    }
+
+    //public Account(String userName){
+        //this.userName=userName;
+    //}
 
     @Override
     public int compareTo(Account o) {
@@ -28,11 +29,13 @@ public class Account implements Comparable<Account> {
         this.score += score;
     }
 
-    private long getScore() {
+    public long getScore() {
         return score;
     }
 
-    private String getUserName() {
+    public void setScore(int num) {score = num;}
+
+    public String getUserName() {
         return userName;
     }
 
@@ -46,10 +49,15 @@ public class Account implements Comparable<Account> {
 
     }
 
-    static Account makeNewAccount(String userName){
-        Account account = new Account(userName);
-        accounts.add(account);
-        return account;
+//    static Account makeNewAccount(String userName){
+//        Account account = new Account(userName);
+//        accounts.add(account);
+//        return account;
+//    }
+
+    public void sumCellNumbersToScore(int num) {
+        score += num;
+
     }
 
 }

@@ -25,11 +25,11 @@ class TextMaker {
 
     /**
      *
-     * @param input
-     * @param xCell
-     * @param yCell
-     * @param root
-     * @return
+     * @param input Value to be displayed on the cell.
+     * @param xCell x-axis length of the cell.
+     * @param yCell y-axis length of the cell.
+     * @param root unsure what root is yet.
+     * @return Displays the input value on the cell.
      */
     Text madeText(String input, double xCell, double yCell, Group root) {
         Text text = new Text(input);

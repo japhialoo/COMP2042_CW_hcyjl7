@@ -24,9 +24,10 @@ public class GameScene {
     public TextMaker textMaker = TextMaker.getSingleInstance();
     private Cell[][] cells = new Cell[n][n];
     private Group root;
-    private long score = 0;
+    //private long score = 0;
     Move move = new Move();
     Check check = new Check();
+    Account account = new Account();
 
 
     static double getLENGTH() {
@@ -82,51 +83,6 @@ public class GameScene {
         }
     }
 
-    /**
-     *
-     * @return boolean value for empty cell. should not return -1 I think.
-     */
-    private int  haveEmptyCell() {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (cells[i][j].getNumber() == 0)
-                    return 1;
-                if(cells[i][j].getNumber() == 2048)
-                    return 0;
-            }
-        }
-        return -1;
-    }
-
-
-    private boolean haveSameNumberNearly(int i, int j) {
-        if (i < n - 1 && j < n - 1) {
-            if (cells[i + 1][j].getNumber() == cells[i][j].getNumber())
-                return true;
-            if (cells[i][j + 1].getNumber() == cells[i][j].getNumber())
-                return true;
-        }
-        return false;
-    }
-
-    private boolean canNotMove() {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (haveSameNumberNearly(i, j)) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    private void sumCellNumbersToScore() {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                score += cells[i][j].getNumber();
-            }
-        }
-    }
 
     void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot) {
         this.root = root;
@@ -165,16 +121,16 @@ public class GameScene {
                 } else if (key.getCode() == KeyCode.RIGHT) {
                     move.right(cells);
                 }
-                GameScene.this.sumCellNumbersToScore();
-                scoreText.setText(score + "");
-                haveEmptyCell = GameScene.this.haveEmptyCell();
+                //sumCellNumbersToScore();
+                scoreText.setText(account.getScore() + "");
+                haveEmptyCell = check.haveEmptyCell(cells);
                 if (haveEmptyCell == -1) {
-                    if (GameScene.this.canNotMove()) {
+                    if (check.canNotMove(cells)) {
                         primaryStage.setScene(endGameScene);
 
-                        EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, score);
+                        EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, account.getScore());
                         root.getChildren().clear();
-                        score = 0;
+                        account.setScore(0);
                     }
                 } else if(haveEmptyCell == 1 && check.moved()) {
                     System.out.println("Moved is value " + check.moved());

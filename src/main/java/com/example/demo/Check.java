@@ -10,7 +10,38 @@ public class Check{
     public boolean moved() {
         return moved;
     }
+    public boolean haveSameNumberNearly(int i, int j, Cell[][] cells) {
+        if (i < n - 1 && j < n - 1) {
+            if (cells[i + 1][j].getNumber() == cells[i][j].getNumber())
+                return true;
+            if (cells[i][j + 1].getNumber() == cells[i][j].getNumber())
+                return true;
+        }
+        return false;
+    }
 
+    public boolean canNotMove(Cell[][] cells) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (haveSameNumberNearly(i, j, cells)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public int  haveEmptyCell(Cell[][] cells) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (cells[i][j].getNumber() == 0)
+                    return 1;
+                if(cells[i][j].getNumber() == 2048)
+                    return 0;
+            }
+        }
+        return -1;
+    }
 
     /**
      *
