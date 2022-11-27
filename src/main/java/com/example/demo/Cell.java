@@ -11,6 +11,7 @@ public class Cell {
     private Group root;
     private Text textClass;
     private boolean modify = false;
+    Move move = new Move();
 
     /**
      *

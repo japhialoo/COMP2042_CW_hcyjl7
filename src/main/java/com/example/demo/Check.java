@@ -5,6 +5,11 @@ package com.example.demo;
  */
 public class Check{
     private final static int n = 4;
+    public static boolean moved = false;
+
+    public boolean moved() {
+        return moved;
+    }
 
 
     /**

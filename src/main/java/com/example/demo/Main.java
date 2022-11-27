@@ -1,20 +1,14 @@
 package com.example.demo;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.ButtonType;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
 import javafx.scene.shape.Rectangle;
 
-import java.util.Optional;
 import java.util.Scanner;
 
 public class Main extends Application {
@@ -64,7 +58,7 @@ public class Main extends Application {
         Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
         setGameScene(gameScene);
         primaryStage.setScene(gameScene);
-        TestScene game = new TestScene();
+        GameScene game = new GameScene();
         game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot);
 
         primaryStage.show();
