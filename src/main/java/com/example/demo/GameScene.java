@@ -111,7 +111,6 @@ public class GameScene {
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key ->{
             Platform.runLater(() -> {
                 int haveEmptyCell;
-                System.out.println("Moved is value " + check.moved() + " before key press");
                 if (key.getCode() == KeyCode.DOWN) {
                     move.down(cells);
                 } else if (key.getCode() == KeyCode.UP) {
@@ -133,10 +132,8 @@ public class GameScene {
                         account.setScore(0);
                     }
                 } else if(haveEmptyCell == 1 && check.moved()) {
-                    System.out.println("Moved is value " + check.moved());
                     GameScene.this.randomFillNumber();
                     check.moved=false;
-                    System.out.println("Moved is value " + check.moved() + " after random filler");
                 }
             });
         });

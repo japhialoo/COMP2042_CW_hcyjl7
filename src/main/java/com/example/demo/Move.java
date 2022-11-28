@@ -64,7 +64,7 @@ public class Move{
     public void horizontally(int i, int j, int des, int sign, Cell[][] cells) {
         if (check.isValidDesH(i, j, des, sign, cells)) {
             cells[i][j].adder(cells[i][des + sign]);
-            cells[i][des].setModify(true);
+            cells[i][des+sign].setModify(true);
             hasMoved(true);
             account.sumCellNumbersToScore(cells[i][des+sign].getNumber());
         } else if (des != j) {
@@ -78,7 +78,7 @@ public class Move{
     public void vertically(int i, int j, int des, int sign, Cell[][] cells) {
         if (check.isValidDesV(i, j, des, sign, cells)) {
             cells[i][j].adder(cells[des + sign][j]);
-            cells[des][j].setModify(true);
+            cells[des+sign][j].setModify(true);
             hasMoved(true);
             account.sumCellNumbersToScore(cells[des+sign][j].getNumber());
         } else if (des != i) {

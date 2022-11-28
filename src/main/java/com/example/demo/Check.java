@@ -56,7 +56,7 @@ public class Check{
         if (des + sign < n && des + sign >= 0) {
             // if destination cell is the same as current cell ( adding them) and
             if (cells[i][des + sign].getNumber() == cells[i][j].getNumber() && !cells[i][des + sign].getModify()
-                    && cells[i][des + sign].getNumber() != 0) {
+                    && cells[i][des + sign].getNumber() != 0 && !cells[i][j].getModify()) {
                 return true;
             }
         }
@@ -75,7 +75,7 @@ public class Check{
     public boolean isValidDesV(int i, int j, int des, int sign, Cell[][] cells) {
         if (des + sign < n && des + sign >= 0)
             if (cells[des + sign][j].getNumber() == cells[i][j].getNumber() && !cells[des + sign][j].getModify()
-                    && cells[des + sign][j].getNumber() != 0) {
+                    && cells[des + sign][j].getNumber() != 0 && !cells[i][j].getModify()) {
                 return true;
             }
         return false;
