@@ -54,7 +54,6 @@ public class Check{
      */
     public boolean isValidDesH(int i, int j, int des, int sign, Cell[][] cells) {
         if (des + sign < n && des + sign >= 0) {
-            // if destination cell is the same as current cell ( adding them) and
             if (cells[i][des + sign].getNumber() == cells[i][j].getNumber() && !cells[i][des + sign].getModify()
                     && cells[i][des + sign].getNumber() != 0 && !cells[i][j].getModify()) {
                 return true;
@@ -92,7 +91,6 @@ public class Check{
     public int passDestination(int i, int j, char direct, Cell[][] cells) {
         int coordinate = j;
         if (direct == 'l') {
-            //System.out.println("Direction is left for row " + i + " column " + j);
             for (int k = j - 1; k >= 0; k--) {
                 if (cells[i][k].getNumber() != 0) {
                     coordinate = k + 1;
@@ -101,12 +99,10 @@ public class Check{
                     coordinate = 0;
                 }
             }
-            //System.out.println("coordinate is " + coordinate);
             return coordinate;
         }
         coordinate = j;
         if (direct == 'r') {
-            //System.out.println("Direction is right for row " + i + " column " + j);
             for (int k = j + 1; k <= n - 1; k++) {
                 if (cells[i][k].getNumber() != 0) {
                     coordinate = k - 1;
@@ -115,12 +111,10 @@ public class Check{
                     coordinate = n - 1;
                 }
             }
-            //System.out.println("coordinate is " + coordinate);
             return coordinate;
         }
         coordinate = i;
         if (direct == 'd') {
-            //System.out.println("Direction is down for row " + i + " column " + j);
             for (int k = i + 1; k <= n - 1; k++) {
                 if (cells[k][j].getNumber() != 0) {
                     coordinate = k - 1;
@@ -130,12 +124,10 @@ public class Check{
                     coordinate = n - 1;
                 }
             }
-            //System.out.println("coordinate is " + coordinate);
             return coordinate;
         }
         coordinate = i;
         if (direct == 'u') {
-            //System.out.println("Direction is up for row " + i + " column " + j);
             for (int k = i - 1; k >= 0; k--) {
                 if (cells[k][j].getNumber() != 0) {
                     coordinate = k + 1;
@@ -144,7 +136,6 @@ public class Check{
                     coordinate = 0;
                 }
             }
-            //System.out.println("coordinate is " + coordinate);
             return coordinate;
         }
         return -1;

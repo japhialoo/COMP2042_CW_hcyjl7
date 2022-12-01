@@ -1,7 +1,10 @@
 package com.example.demo;
 
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -9,6 +12,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class GameScene {
@@ -28,6 +32,9 @@ public class GameScene {
     Move move = new Move();
     Check check = new Check();
     Account account = new Account();
+    private Stage stage;
+    private Scene scene;
+
 
 
     static double getLENGTH() {
@@ -84,7 +91,7 @@ public class GameScene {
     }
 
 
-    void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot) {
+    void game(Scene gameScene, Group root) {
         this.root = root;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -125,14 +132,14 @@ public class GameScene {
                 haveEmptyCell = check.haveEmptyCell(cells);
                 if (haveEmptyCell == -1) {
                     if (check.canNotMove(cells)) {
-                        primaryStage.setScene(endGameScene);
-
-                        EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, account.getScore());
-                        root.getChildren().clear();
+//                        primaryStage.setScene(endGameScene);
+//
+//                        EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, account.getScore());
+//                        root.getChildren().clear();
                         account.setScore(0);
                     }
                 } else if(haveEmptyCell == 1 && check.moved()) {
-                    GameScene.this.randomFillNumber();
+                    randomFillNumber();
                     check.moved=false;
                 }
             });
