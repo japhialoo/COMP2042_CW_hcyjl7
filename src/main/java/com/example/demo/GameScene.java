@@ -1,39 +1,34 @@
 package com.example.demo;
 
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.Random;
 
 public class GameScene {
-    // Height used for the height of the box for the game I think will alter and find out.
-    private static int HEIGHT = 700;
     // n is used for the number of boxes on the x-axis and y-axis. used in Cell[][] 2d array to create a grid
     private final static int n = 4;
     // Distance between cells duh
     private final static int distanceBetweenCells = 10;
+    // Height used for the height of the box for the game I think will alter and find out.
+    private final static int HEIGHT = 700;
     // Length is 700 minus 4 plus 1 times 10 divide 4 -> 700 - 12.5 -> 687.5
-    private static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
+    private final static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     // Unsure of the use of textMaker
-    public TextMaker textMaker = TextMaker.getSingleInstance();
-    private Cell[][] cells = new Cell[n][n];
+    TextMaker textMaker = TextMaker.getSingleInstance();
+    private final Cell[][] cells = new Cell[n][n];
     private Group root;
     //private long score = 0;
     Move move = new Move();
     Check check = new Check();
-    Account account = new Account();
-    private Stage stage;
-    private Scene scene;
 
 
 
@@ -71,9 +66,7 @@ public class GameScene {
 
         Text text;
         Random random = new Random();
-        boolean putTwo = true;
-        if (random.nextInt() % 2 == 0)
-            putTwo = false;
+        boolean putTwo = random.nextInt() % 2 != 0;
         int xCell, yCell;
         xCell = random.nextInt(aForBound+1);
         yCell = random.nextInt(bForBound+1);
@@ -91,7 +84,8 @@ public class GameScene {
     }
 
 
-    void game(Scene gameScene, Group root) {
+    void game(Scene gameScene, Group root,  Stage primaryStage, Scene endGameScene, Group endGameRoot, Account account) {
+
         this.root = root;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -112,37 +106,37 @@ public class GameScene {
         scoreText.setFont(Font.font(20));
         scoreText.setText("0");
 
-        randomFillNumber();
-        randomFillNumber();
 
-        gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key ->{
-            Platform.runLater(() -> {
-                int haveEmptyCell;
-                if (key.getCode() == KeyCode.DOWN) {
-                    move.down(cells);
-                } else if (key.getCode() == KeyCode.UP) {
-                    move.up(cells);
-                } else if (key.getCode() == KeyCode.LEFT) {
-                    move.left(cells);
-                } else if (key.getCode() == KeyCode.RIGHT) {
-                    move.right(cells);
+        randomFillNumber();
+        randomFillNumber();
+        System.out.println(account.getUserName());
+
+        gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key -> Platform.runLater(() -> {
+            int haveEmptyCell;
+            if (key.getCode() == KeyCode.DOWN) {
+                move.down(cells, account);
+            } else if (key.getCode() == KeyCode.UP) {
+                move.up(cells, account);
+            } else if (key.getCode() == KeyCode.LEFT) {
+                move.left(cells, account);
+            } else if (key.getCode() == KeyCode.RIGHT) {
+                move.right(cells, account);
+            }
+            //sumCellNumbersToScore();
+            scoreText.setText(account.getScore() + "");
+            haveEmptyCell = check.haveEmptyCell(cells);
+            if (haveEmptyCell == -1) {
+                if (check.canNotMove(cells)) {
+                    System.out.println(account.getUserName());
+                    System.out.println(account.getScore());
+                    primaryStage.setScene(endGameScene);
+                    EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, account.getScore());
+                    root.getChildren().clear();
                 }
-                //sumCellNumbersToScore();
-                scoreText.setText(account.getScore() + "");
-                haveEmptyCell = check.haveEmptyCell(cells);
-                if (haveEmptyCell == -1) {
-                    if (check.canNotMove(cells)) {
-//                        primaryStage.setScene(endGameScene);
-//
-//                        EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, account.getScore());
-//                        root.getChildren().clear();
-                        account.setScore(0);
-                    }
-                } else if(haveEmptyCell == 1 && check.moved()) {
-                    randomFillNumber();
-                    check.moved=false;
-                }
-            });
-        });
+            } else if(haveEmptyCell == 1 && check.moved()) {
+                randomFillNumber();
+                Check.moved =false;
+            }
+        }));
     }
 }

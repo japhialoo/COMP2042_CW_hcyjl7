@@ -15,14 +15,10 @@ public class Account implements Comparable<Account> {
     public static String userName ;
     private static ArrayList<Account> accounts = new ArrayList<>();
 
-    public Account() {
-        this.userName = "Guest";
-    }
 
     public Account(String userName) {
         this.userName = userName;
     }
-
 
     @Override
     public int compareTo(Account o) {
