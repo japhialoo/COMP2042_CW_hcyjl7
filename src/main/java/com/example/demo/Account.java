@@ -7,17 +7,20 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.ExecutionException;
 
-public class Account implements Comparable<Account> {
-    public static long score = 0;
-    public static String userName ;
-    private static ArrayList<Account> accounts = new ArrayList<>();
+public class Account implements Comparable<Account>{
+    public long score = 0;
+    public String userName ;
+    public static ArrayList<Account> accounts = new ArrayList<>();
 
 
-    public Account(String userName) {
-        this.userName = userName;
+    public Account(String name) {
+        userName = name;
+        score = 0;
     }
 
     @Override
@@ -33,10 +36,17 @@ public class Account implements Comparable<Account> {
         return score;
     }
 
-    public void setScore(int num) {score = num;}
+    public void setScore(long num) {score = num;}
 
     public String getUserName() {
         return userName;
+    }
+
+    static void printAccounts() {
+        for (Account account : accounts) {
+            System.out.println("name: " + account.getUserName());
+            System.out.println(("score: " + account.getScore()));
+        }
     }
 
     static Account accountHaveBeenExist(String userName){
@@ -44,9 +54,11 @@ public class Account implements Comparable<Account> {
             if(account.getUserName().equals(userName)){
                 return account;
             }
+            else if (account.getUserName() == null){
+                return null;
+            }
         }
         return null;
-
     }
 
     static Account makeNewAccount(String userName){

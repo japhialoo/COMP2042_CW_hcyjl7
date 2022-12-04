@@ -12,7 +12,6 @@ public class Move{
 
     // Moving all the cells according to the direction. filters through all cells row by row
     public void left(Cell[][] cells, Account account) {
-        System.out.println("Moving Left");
         for (int i = 0; i < n; i++) {
             for (int j = 1; j < n; j++) {
                 horizontally(i, j, check.passDestination(i, j, 'l', cells), -1, cells, account);
@@ -24,7 +23,6 @@ public class Move{
     }
 
     public void right(Cell[][] cells, Account account) {
-        System.out.println("Moving Right");
         for (int i = 0; i < n; i++) {
             for (int j = n - 1; j >= 0; j--) {
                 horizontally(i, j, check.passDestination(i, j, 'r', cells), 1, cells, account);
@@ -36,7 +34,6 @@ public class Move{
     }
 
     public void up(Cell[][] cells, Account account) {
-        System.out.println("Moving Up");
         for (int j = 0; j < n; j++) {
             for (int i = 1; i < n; i++) {
                 vertically(i, j, check.passDestination(i, j, 'u', cells), -1, cells, account);
@@ -48,7 +45,6 @@ public class Move{
 
     }
     public void down(Cell[][] cells, Account account) {
-        System.out.println("Moving Down");
         for (int j = 0; j < n; j++) {
             for (int i = n - 1; i >= 0; i--) {
                 vertically(i, j, check.passDestination(i, j, 'd', cells), 1, cells, account);

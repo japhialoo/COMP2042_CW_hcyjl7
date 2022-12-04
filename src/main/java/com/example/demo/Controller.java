@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static com.example.demo.Account.accounts;
+
 public class Controller {
     private Stage stage;
     private Scene scene;
@@ -43,24 +45,24 @@ public class Controller {
 //        stage.show();
 //    }
 
-    public void setGameScene(ActionEvent event) {
+    public void setGameScene(ActionEvent event) throws IOException {
         userName = name.getText();
-        System.out.println(userName);
+
         if (Account.accountHaveBeenExist(userName) == null) {
             System.out.println("Account does not exist");
             this.account = Account.makeNewAccount(userName);
-            System.out.println(this.account.getUserName());
+            System.out.println("Created " + this.account.getUserName());
         }
         else {
             System.out.println("Account Exists");
             this.account = Account.accountHaveBeenExist(userName);
-            System.out.println(this.account.getUserName());
+//            System.out.println(this.account.getUserName());
         }
-        System.out.println(this.account.getUserName());
+
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         setGameRoot(gameRoot);
-        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
         Group endgameRoot = new Group();
+        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
         Scene endGameScene = new Scene(endgameRoot, WIDTH, HEIGHT, Color.rgb(250, 20, 100, 0.2));
         stage.setScene(gameScene);
         game.game(gameScene, gameRoot, stage, endGameScene, endgameRoot, this.account);

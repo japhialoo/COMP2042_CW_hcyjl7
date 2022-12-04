@@ -1,8 +1,10 @@
 package com.example.demo;
 
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -11,6 +13,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Random;
 
 public class GameScene {
@@ -63,7 +68,6 @@ public class GameScene {
         }
 
 
-
         Text text;
         Random random = new Random();
         boolean putTwo = random.nextInt() % 2 != 0;
@@ -109,7 +113,9 @@ public class GameScene {
 
         randomFillNumber();
         randomFillNumber();
-        System.out.println(account.getUserName());
+        System.out.println("Currently in game " + account.getUserName());
+
+
 
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key -> Platform.runLater(() -> {
             int haveEmptyCell;
@@ -127,8 +133,9 @@ public class GameScene {
             haveEmptyCell = check.haveEmptyCell(cells);
             if (haveEmptyCell == -1) {
                 if (check.canNotMove(cells)) {
-                    System.out.println(account.getUserName());
-                    System.out.println(account.getScore());
+
+                    User.writeAllToFile();
+                    Account.printAccounts();
                     primaryStage.setScene(endGameScene);
                     EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, account.getScore());
                     root.getChildren().clear();
