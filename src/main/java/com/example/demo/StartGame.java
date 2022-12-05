@@ -3,23 +3,25 @@ package com.example.demo;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static com.example.demo.Account.accounts;
-
-public class Controller {
+/**
+ * Controller for start game scene
+ */
+public class StartGame {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    ColorPicker colorPicker = new ColorPicker();
     static final int WIDTH = 900;
     static final int HEIGHT = 900;
     @FXML
@@ -28,6 +30,16 @@ public class Controller {
     private Group gameRoot = new Group();
     public String userName;
     Account account;
+
+
+
+     public ColorPicker pickColor(ActionEvent event) {
+         colorPicker.setOnAction(e -> {
+             Color c = colorPicker.getValue();
+             System.out.println("New Color's RGB = "+c.getRed()+" "+c.getGreen()+" "+c.getBlue());
+         });
+         return colorPicker;
+     }
 
     public void setGameRoot(Group gameRoot) {
         this.gameRoot = gameRoot;
@@ -68,11 +80,11 @@ public class Controller {
         game.game(gameScene, gameRoot, stage, endGameScene, endgameRoot, this.account);
     }
 
-    public void setEndScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("endgame.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+//    public void setEndScene(ActionEvent event) throws IOException {
+//        Parent root = FXMLLoader.load(getClass().getResource("endgame.fxml"));
+//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//        scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+//    }
 }

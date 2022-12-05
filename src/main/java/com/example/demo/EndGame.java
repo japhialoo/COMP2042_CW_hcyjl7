@@ -50,7 +50,7 @@ public class EndGame {
 
         Button quitButton = new Button("QUIT");
         quitButton.setPrefSize(100,30);
-        quitButton.setTextFill(Color.PINK);
+        quitButton.setTextFill(Color.BLACK);
         root.getChildren().add(quitButton);
         quitButton.relocate(100,800);
         quitButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -66,6 +66,28 @@ public class EndGame {
                     root.getChildren().clear();
                     Platform.exit();
                 }
+            }
+        });
+
+        Button retryButton = new Button("RETRY");
+        retryButton.setPrefSize(100,30);
+        retryButton.setTextFill(Color.BLACK);
+        root.getChildren().add(retryButton);
+        retryButton.relocate(700,800);
+
+        retryButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(getClass().getResource("startgame.fxml"));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
             }
         });
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("endgame.fxml"));

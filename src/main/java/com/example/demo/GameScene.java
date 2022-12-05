@@ -136,9 +136,7 @@ public class GameScene {
                 if (check.canNotMove(cells)) {
                     primaryStage.setScene(endGameScene);
                     EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, account.getScore());
-                    if (account.getScore() < highScore) {
-                        account.setScore(highScore);
-                    }
+                    if (account.getScore() < highScore) {account.setScore(highScore);}
                     User.writeAllToFile();
                     Account.printAccounts();
                     root.getChildren().clear();

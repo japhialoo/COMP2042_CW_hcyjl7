@@ -33,7 +33,13 @@ class TextMaker {
      */
     Text madeText(String input, double xCell, double yCell, Group root) {
         Text text = new Text(input);
-        text.setFont(Font.font(fontSize));
+        int number = Integer.parseInt(text.getText());
+        if (number < 1024) {
+            text.setFont(Font.font(fontSize));
+        }
+        else {
+            text.setFont(Font.font(fontSize/2));
+        }
         text.relocate((xCell + (1.2)* length / 7.0), (yCell + 2 * length / 7.0));
         text.setFill(Color.WHITE);
 
