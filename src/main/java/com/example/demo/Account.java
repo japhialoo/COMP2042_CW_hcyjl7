@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
 public class Account implements Comparable<Account>{
-    public long score = 0;
+    public long score;
     public String userName ;
     public static ArrayList<Account> accounts = new ArrayList<>();
 

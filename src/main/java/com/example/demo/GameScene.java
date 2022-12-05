@@ -89,7 +89,8 @@ public class GameScene {
 
 
     void game(Scene gameScene, Group root,  Stage primaryStage, Scene endGameScene, Group endGameRoot, Account account) {
-
+        long highScore = account.getScore();
+        account.setScore(0);
         this.root = root;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -133,11 +134,13 @@ public class GameScene {
             haveEmptyCell = check.haveEmptyCell(cells);
             if (haveEmptyCell == -1) {
                 if (check.canNotMove(cells)) {
-
-                    User.writeAllToFile();
-                    Account.printAccounts();
                     primaryStage.setScene(endGameScene);
                     EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, account.getScore());
+                    if (account.getScore() < highScore) {
+                        account.setScore(highScore);
+                    }
+                    User.writeAllToFile();
+                    Account.printAccounts();
                     root.getChildren().clear();
                 }
             } else if(haveEmptyCell == 1 && check.moved()) {
