@@ -6,38 +6,47 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="900.0" style="-fx-background-color: #edc22e;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.StartGame">
+<BorderPane prefHeight="900.0" prefWidth="900.0" style="-fx-background-color: #edc22e;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.StartGame">
    <top>
-      <AnchorPane prefHeight="268.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="239.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
             <Text fill="WHITE" layoutX="342.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2048">
                <font>
                   <Font name="Gill Sans" size="96.0" />
                </font>
             </Text>
-            <ColorPicker fx:id="colorPicker" editable="true" layoutX="14.0" layoutY="14.0" onAction="#setColor" promptText="Set Theme" style="-fx-background-color: #ffffff;" />
          </children>
       </AnchorPane>
    </top>
    <bottom>
       <AnchorPane prefHeight="598.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="369.0" layoutY="55.0" prefHeight="75.0" prefWidth="139.0" text="Name" textAlignment="JUSTIFY" textFill="WHITE">
+            <Label layoutX="373.0" layoutY="21.0" prefHeight="75.0" prefWidth="139.0" text="Name" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font name="SansSerif Bold" size="50.0" />
                </font>
             </Label>
-            <TextField fx:id="name" layoutX="189.0" layoutY="149.0" onAction="#getName" prefHeight="53.0" prefWidth="499.0" promptText="Name">
+            <TextField fx:id="name" layoutX="200.0" layoutY="133.0" onAction="#getName" prefHeight="53.0" prefWidth="499.0" promptText="Name">
                <font>
                   <Font name="Gill Sans" size="35.0" />
                </font></TextField>
-            <Button layoutX="381.0" layoutY="375.0" mnemonicParsing="false" onAction="#setGameScene" prefHeight="49.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="Log In">
+            <Button layoutX="391.0" layoutY="227.0" mnemonicParsing="false" onAction="#setGameScene" prefHeight="49.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="Log In">
                <font>
                   <Font name="Gill Sans" size="24.0" />
                </font></Button>
+            <ColorPicker fx:id="colorPicker" editable="true" layoutX="377.0" layoutY="410.0" onAction="#setColor" prefWidth="138.0" promptText="Set Theme" style="-fx-background-color: ffffff; -fx-border-radius: 50;">
+               <value>
+                  <Color red="0.929411768913269" green="0.7607843279838562" blue="0.18039216101169586" />
+               </value></ColorPicker>
+            <Text layoutX="399.0" layoutY="391.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Theme">
+               <font>
+                  <Font name="Gill Sans" size="20.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </bottom>

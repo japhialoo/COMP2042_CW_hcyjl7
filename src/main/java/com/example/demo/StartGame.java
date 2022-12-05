@@ -31,7 +31,7 @@ public class StartGame {
     GameScene game = new GameScene();
     private Group gameRoot = new Group();
     public String userName;
-    public Color c;
+    public Color c = Color.rgb(237, 194, 46);
     Account account;
 
 
