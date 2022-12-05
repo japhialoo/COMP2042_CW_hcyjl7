@@ -35,29 +35,46 @@ public class EndGame {
         return singleInstance;
     }
 
-    public void endGameShow(Scene endGameScene, Group root, Stage primaryStage,long score) {
+    public void endGameShow(Scene endGameScene, Group root, Stage primaryStage,long score,long highScore) {
         Text text = new Text("GAME OVER");
-        text.relocate(250,250);
+        text.relocate(250,200);
         text.setFont(Font.font(80));
         root.getChildren().add(text);
 
+        Text scoreTitle = new Text("Score:");
+        scoreTitle.setFill(Color.BLACK);
+        scoreTitle.relocate(200,400);
+        scoreTitle.setFont(Font.font(50));
+        root.getChildren().add(scoreTitle);
 
         Text scoreText = new Text(score+"");
         scoreText.setFill(Color.BLACK);
-        scoreText.relocate(250,600);
-        scoreText.setFont(Font.font(80));
+        scoreText.relocate(200,500);
+        scoreText.setFont(Font.font(70));
         root.getChildren().add(scoreText);
 
+        Text highScoreTitle = new Text("High Score:");
+        highScoreTitle.setFill(Color.BLACK);
+        highScoreTitle.relocate(500,400);
+        highScoreTitle.setFont(Font.font(50));
+        root.getChildren().add(highScoreTitle);
+
+        Text highScoreText = new Text(highScore+"");
+        highScoreText.setFill(Color.BLACK);
+        highScoreText.relocate(500,500);
+        highScoreText.setFont(Font.font(70));
+        root.getChildren().add(highScoreText);
+
         Button quitButton = new Button("QUIT");
-        quitButton.setPrefSize(100,30);
+        quitButton.setPrefSize(100,60);
         quitButton.setTextFill(Color.BLACK);
         root.getChildren().add(quitButton);
-        quitButton.relocate(100,800);
+        quitButton.relocate(150,700);
         quitButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Quit Dialog");
+                alert.setTitle("Exit Game");
                 alert.setHeaderText("Quit from this page");
                 alert.setContentText("Are you sure?");
 
@@ -70,10 +87,10 @@ public class EndGame {
         });
 
         Button retryButton = new Button("RETRY");
-        retryButton.setPrefSize(100,30);
+        retryButton.setPrefSize(100,60);
         retryButton.setTextFill(Color.BLACK);
         root.getChildren().add(retryButton);
-        retryButton.relocate(700,800);
+        retryButton.relocate(650,700);
 
         retryButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

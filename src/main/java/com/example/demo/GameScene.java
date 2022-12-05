@@ -1,22 +1,16 @@
 package com.example.demo;
 
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class GameScene {
     // n is used for the number of boxes on the x-axis and y-axis. used in Cell[][] 2d array to create a grid
@@ -89,7 +83,7 @@ public class GameScene {
 
 
     void game(Scene gameScene, Group root,  Stage primaryStage, Scene endGameScene, Group endGameRoot, Account account) {
-        long highScore = account.getScore();
+        AtomicLong highScore = new AtomicLong(account.getScore());
         account.setScore(0);
         this.root = root;
         for (int i = 0; i < n; i++) {
@@ -135,8 +129,10 @@ public class GameScene {
             if (haveEmptyCell == -1) {
                 if (check.canNotMove(cells)) {
                     primaryStage.setScene(endGameScene);
-                    EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, account.getScore());
-                    if (account.getScore() < highScore) {account.setScore(highScore);}
+                    if (account.getScore() > highScore.get()) {
+                        highScore.set(account.getScore());}
+                    EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, account.getScore(), highScore.get());
+                    if (account.getScore() < highScore.get()) {account.setScore(highScore.get());}
                     User.writeAllToFile();
                     Account.printAccounts();
                     root.getChildren().clear();

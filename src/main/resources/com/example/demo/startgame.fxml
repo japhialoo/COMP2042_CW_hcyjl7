@@ -18,7 +18,7 @@
                   <Font name="Gill Sans" size="96.0" />
                </font>
             </Text>
-            <ColorPicker fx:id="colorPicker" layoutX="14.0" layoutY="14.0" onAction="#setGameScene" promptText="Set Theme" />
+            <ColorPicker fx:id="colorPicker" editable="true" layoutX="14.0" layoutY="14.0" onAction="#setColor" promptText="Set Theme" style="-fx-background-color: #ffffff;" />
          </children>
       </AnchorPane>
    </top>

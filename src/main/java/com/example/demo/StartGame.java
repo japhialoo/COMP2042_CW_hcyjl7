@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -18,28 +19,28 @@ import java.io.IOException;
  * Controller for start game scene
  */
 public class StartGame {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    ColorPicker colorPicker = new ColorPicker();
+//    private Scene scene;
+//    private Parent root;
+
     static final int WIDTH = 900;
     static final int HEIGHT = 900;
     @FXML
     TextField name;
+    @FXML
+    ColorPicker colorPicker = new ColorPicker();
     GameScene game = new GameScene();
     private Group gameRoot = new Group();
     public String userName;
+    public Color c;
     Account account;
 
 
 
-     public ColorPicker pickColor(ActionEvent event) {
-         colorPicker.setOnAction(e -> {
-             Color c = colorPicker.getValue();
-             System.out.println("New Color's RGB = "+c.getRed()+" "+c.getGreen()+" "+c.getBlue());
-         });
-         return colorPicker;
-     }
+
+    public void setColor(ActionEvent event) {
+        c = colorPicker.getValue();
+        System.out.println(c);
+    }
 
     public void setGameRoot(Group gameRoot) {
         this.gameRoot = gameRoot;
@@ -71,11 +72,11 @@ public class StartGame {
 //            System.out.println(this.account.getUserName());
         }
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         setGameRoot(gameRoot);
         Group endgameRoot = new Group();
-        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
-        Scene endGameScene = new Scene(endgameRoot, WIDTH, HEIGHT, Color.rgb(250, 20, 100, 0.2));
+        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, c);
+        Scene endGameScene = new Scene(endgameRoot, WIDTH, HEIGHT, c);
         stage.setScene(gameScene);
         game.game(gameScene, gameRoot, stage, endGameScene, endgameRoot, this.account);
     }

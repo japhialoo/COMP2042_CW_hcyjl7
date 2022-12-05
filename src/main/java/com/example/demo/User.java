@@ -1,32 +1,23 @@
 package com.example.demo;
 
 import java.io.*;
+import java.util.Objects;
 
 public class User implements Serializable{
-
     public String userName;
     public Long highScore;
+    @Serial
     private static final long serialVersionUID = 6150078625063920690L;
     static final File file = new File("Users.txt");
-
-    public User() {
-    }
     public User(String name, Long highScore) {
         this.userName = name;
-        if (highScore == null) {
-            this.highScore = Long.valueOf(0);
-        }
-        else {
-            this.highScore = highScore;
-        }
+        this.highScore = Objects.requireNonNullElse(highScore, 0L);
     }
-
 
     public static void readFromFile() {
         try (FileInputStream fis = new FileInputStream(file);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             boolean cont = true;
-
             while (cont) {
                 // read object from file
                 User user = (User) ois.readObject();
@@ -41,11 +32,8 @@ public class User implements Serializable{
                     cont = false;
                 }
             }
-
-
         } catch (IOException | ClassNotFoundException ex) {
             System.out.println("End Of File");
-
         }
     }
 
@@ -56,13 +44,10 @@ public class User implements Serializable{
                 User user = new User(account.getUserName(), account.getScore());
                 objectOS.writeObject(user);
             }
-
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
     }
-
 
 }
 
