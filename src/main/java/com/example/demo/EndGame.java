@@ -25,44 +25,49 @@ public class EndGame {
 
     private Stage stage;
     private Scene scene;
+    static final int WIDTH = 900;
+    static final int HEIGHT = 900;
+    GameScene game = new GameScene();
     private static EndGame singleInstance = null;
     private EndGame(){
 
     }
+
     public static EndGame getInstance(){
         if(singleInstance == null)
             singleInstance= new EndGame();
         return singleInstance;
     }
 
-    public void endGameShow(Scene endGameScene, Group root, Stage primaryStage,long score,long highScore) {
+    public Text setStyle(Text text, int x, int y, int font) {
+        text.relocate(x,y);
+        text.setFont(Font.font(font));
+        return text;
+    }
+
+    public void endGameShow(Group root, Account account,long highScore, Color c) {
         Text text = new Text("GAME OVER");
-        text.relocate(250,200);
-        text.setFont(Font.font(80));
+        text = setStyle(text, 250, 200, 80);
         root.getChildren().add(text);
 
         Text scoreTitle = new Text("Score:");
         scoreTitle.setFill(Color.BLACK);
-        scoreTitle.relocate(200,400);
-        scoreTitle.setFont(Font.font(50));
+        scoreTitle = setStyle(scoreTitle, 200, 400, 50);
         root.getChildren().add(scoreTitle);
 
-        Text scoreText = new Text(score+"");
+        Text scoreText = new Text(account.score+"");
         scoreText.setFill(Color.BLACK);
-        scoreText.relocate(200,500);
-        scoreText.setFont(Font.font(70));
+        scoreText = setStyle(scoreText,200, 500, 70);
         root.getChildren().add(scoreText);
 
         Text highScoreTitle = new Text("High Score:");
         highScoreTitle.setFill(Color.BLACK);
-        highScoreTitle.relocate(500,400);
-        highScoreTitle.setFont(Font.font(50));
+        highScoreTitle = setStyle(highScoreTitle, 500, 400, 50);
         root.getChildren().add(highScoreTitle);
 
         Text highScoreText = new Text(highScore+"");
         highScoreText.setFill(Color.BLACK);
-        highScoreText.relocate(500,500);
-        highScoreText.setFont(Font.font(70));
+        highScoreText = setStyle(highScoreText, 500, 500, 70);
         root.getChildren().add(highScoreText);
 
         Button quitButton = new Button("QUIT");
@@ -75,8 +80,7 @@ public class EndGame {
             public void handle(MouseEvent event) {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Exit Game");
-                alert.setHeaderText("Quit from this page");
-                alert.setContentText("Are you sure?");
+                alert.setHeaderText("You will now exit the game :)");
 
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK){
@@ -90,9 +94,28 @@ public class EndGame {
         retryButton.setPrefSize(100,60);
         retryButton.setTextFill(Color.BLACK);
         root.getChildren().add(retryButton);
-        retryButton.relocate(650,700);
+        retryButton.relocate(400,700);
 
         retryButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Group gameRoot = new Group();
+                Group endgameRoot = new Group();
+                Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, c);
+                Scene endGameScene = new Scene(endgameRoot, WIDTH, HEIGHT, c);
+                stage.setScene(gameScene);
+                game.game(gameScene, gameRoot, stage, endGameScene, endgameRoot, account, c);
+            }
+        });
+
+        Button menuButton = new Button("MENU");
+        menuButton.setPrefSize(100,60);
+        menuButton.setTextFill(Color.BLACK);
+        root.getChildren().add(menuButton);
+        menuButton.relocate(650,700);
+
+        menuButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 Parent root = null;
@@ -107,13 +130,6 @@ public class EndGame {
                 stage.show();
             }
         });
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("endgame.fxml"));
-//        root = loader.load();
-//        endGameScene = new Scene(root);
-//        primaryStage.setTitle("2048");
-//        primaryStage.setScene(endGameScene);
-//        primaryStage.show();
-
     }
 
     public void setStartScene(ActionEvent event) throws IOException {
@@ -123,10 +139,4 @@ public class EndGame {
         stage.setScene(scene);
         stage.show();
     }
-
-    public void exitGame(ActionEvent event) {
-        Platform.exit();
-    }
-
-
 }
