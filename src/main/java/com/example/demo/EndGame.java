@@ -18,6 +18,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -75,18 +76,15 @@ public class EndGame {
         quitButton.setTextFill(Color.BLACK);
         root.getChildren().add(quitButton);
         quitButton.relocate(150,700);
-        quitButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Exit Game");
-                alert.setHeaderText("You will now exit the game :)");
+        quitButton.setOnMouseClicked(event -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Exit Game");
+            alert.setHeaderText("You will now exit the game :)");
 
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == ButtonType.OK){
-                    root.getChildren().clear();
-                    Platform.exit();
-                }
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.orElse(null) == ButtonType.OK){
+                root.getChildren().clear();
+                Platform.exit();
             }
         });
 
@@ -96,17 +94,14 @@ public class EndGame {
         root.getChildren().add(retryButton);
         retryButton.relocate(400,700);
 
-        retryButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Group gameRoot = new Group();
-                Group endgameRoot = new Group();
-                Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, c);
-                Scene endGameScene = new Scene(endgameRoot, WIDTH, HEIGHT, c);
-                stage.setScene(gameScene);
-                game.game(gameScene, gameRoot, stage, endGameScene, endgameRoot, account, c);
-            }
+        retryButton.setOnMouseClicked(event -> {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Group gameRoot = new Group();
+            Group endgameRoot = new Group();
+            Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, c);
+            Scene endGameScene = new Scene(endgameRoot, WIDTH, HEIGHT, c);
+            stage.setScene(gameScene);
+            game.game(gameScene, gameRoot, stage, endGameScene, endgameRoot, account, c);
         });
 
         Button menuButton = new Button("MENU");
@@ -115,16 +110,16 @@ public class EndGame {
         root.getChildren().add(menuButton);
         menuButton.relocate(650,700);
 
-        menuButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        menuButton.setOnMouseClicked(new EventHandler<>() {
             @Override
             public void handle(MouseEvent event) {
-                Parent root = null;
+                Parent root;
                 try {
-                    root = FXMLLoader.load(getClass().getResource("startgame.fxml"));
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("start-game.fxml")));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -133,7 +128,7 @@ public class EndGame {
     }
 
     public void setStartScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("startgame.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("start-game.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
