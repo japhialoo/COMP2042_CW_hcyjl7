@@ -1,4 +1,4 @@
-package com.example.demo;
+package game;
 
 
 import javafx.scene.Group;

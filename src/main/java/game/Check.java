@@ -1,4 +1,4 @@
-package com.example.demo;
+package game;
 
 /**
  * Check class for all methods in charge of validating moves.

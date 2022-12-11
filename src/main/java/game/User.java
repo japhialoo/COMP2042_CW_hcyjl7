@@ -1,4 +1,4 @@
-package com.example.demo;
+package game;
 
 import java.io.*;
 import java.util.Objects;

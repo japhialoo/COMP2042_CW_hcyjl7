@@ -1,4 +1,4 @@
-package com.example.demo;
+package game;
 
 /**
  * Move class for all methods related to moving a cell.
