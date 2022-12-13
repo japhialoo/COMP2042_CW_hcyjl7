@@ -48,11 +48,9 @@ public class Check{
             for (int j = 0; j < GameScene.n; j++) {
                 if (cells[i][j].getNumber() == 0)
                     return 1;
-                if(cells[i][j].getNumber() == 2048)
-                    return 0;
             }
         }
-        return -1;
+        return 0;
     }
 
     public boolean  have2048(Cell[][] cells) {

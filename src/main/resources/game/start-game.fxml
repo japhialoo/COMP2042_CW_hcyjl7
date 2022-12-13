@@ -24,7 +24,7 @@
       </AnchorPane>
    </top>
    <bottom>
-      <AnchorPane prefHeight="598.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="625.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="373.0" layoutY="21.0" prefHeight="75.0" prefWidth="139.0" text="Name" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
@@ -35,36 +35,36 @@
                <font>
                   <Font name="Gill Sans" size="35.0" />
                </font></TextField>
-            <Button layoutX="391.0" layoutY="227.0" mnemonicParsing="false" onAction="#setGameScene" prefHeight="49.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="Log In">
+            <Button layoutX="386.0" layoutY="228.0" mnemonicParsing="false" onAction="#setGameScene" prefHeight="49.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="Log In">
                <font>
                   <Font name="Gill Sans" size="24.0" />
                </font></Button>
-            <ColorPicker fx:id="colorPicker" editable="true" layoutX="374.0" layoutY="468.0" onAction="#setColor" prefWidth="138.0" promptText="Set Theme" style="-fx-background-color: #ffffff; -fx-border-radius: 50;">
+            <ColorPicker fx:id="colorPicker" editable="true" layoutX="379.0" layoutY="467.0" onAction="#setColor" prefWidth="138.0" promptText="Set Theme" style="-fx-background-color: #ffffff; -fx-border-radius: 50;">
                <value>
                   <Color red="0.929411768913269" green="0.7607843279838562" blue="0.18039216101169586" />
                </value></ColorPicker>
-            <Text layoutX="399.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Theme">
+            <Text layoutX="399.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Theme">
                <font>
                   <Font name="Gill Sans" size="20.0" />
                </font>
             </Text>
-            <Slider fx:id="difficultySlider" layoutX="373.0" layoutY="380.0" majorTickUnit="1.0" max="3.0" min="1.0" minorTickCount="1" onMouseReleased="#setDifficulty" snapToTicks="true" value="2.0" />
-            <Text layoutX="391.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Difficulty">
+            <Slider fx:id="difficultySlider" layoutX="377.0" layoutY="342.0" majorTickUnit="1.0" max="3.0" min="1.0" minorTickCount="1" onMouseReleased="#setDifficulty" snapToTicks="true" value="2.0" />
+            <Text layoutX="393.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Difficulty">
                <font>
                   <Font name="Gill Sans" size="20.0" />
                </font>
             </Text>
-            <Text layoutX="364.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Easy">
+            <Text layoutX="372.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Easy">
                <font>
                   <Font name="Gill Sans" size="15.0" />
                </font>
             </Text>
-            <Text layoutX="419.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Normal">
+            <Text layoutX="422.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Normal">
                <font>
                   <Font name="Gill Sans" size="15.0" />
                </font>
             </Text>
-            <Text layoutX="485.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hard">
+            <Text layoutX="497.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hard">
                <font>
                   <Font name="Gill Sans" size="15.0" />
                </font>

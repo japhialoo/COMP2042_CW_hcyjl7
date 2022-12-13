@@ -1,6 +1,5 @@
 package game;
 
-import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -10,8 +9,6 @@ import javafx.scene.text.Text;
  */
 class TextMaker {
     private static TextMaker singleInstance = null;
-    private final double length = GameScene.LENGTH;
-    private final double fontSize = (3 * length) / 7.0;
 
 
     /**
@@ -32,9 +29,10 @@ class TextMaker {
      * @return Displays the input value on the cell.
      */
     Text madeText(String input, double xCell, double yCell) {
+        double fontSize = (3 * GameScene.LENGTH) / 8.0;
         Text text = new Text(input);
         text.setFont(Font.font(fontSize));
-        text.relocate((xCell + (1.2)* length / 7.0), (yCell + 2 * length / 7.0));
+        text.relocate((xCell + (0.3)* GameScene.LENGTH / 7.0), (yCell + 2 * GameScene.LENGTH / 7.0));
         text.setFill(Color.WHITE);
 
         return text;

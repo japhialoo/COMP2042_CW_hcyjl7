@@ -4,7 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class   Main extends Application {
@@ -16,7 +19,14 @@ public class   Main extends Application {
         User.readFromFile();
         Parent root = loader.load();
         Scene startScene = new Scene(root);
+        try {
+            Image logo = new Image("2048_logo.png");
+            primaryStage.getIcons().add(logo);
+        } catch (Exception e) {
+            System.out.println("logo not found");
+        }
         primaryStage.setTitle("2048");
+
         primaryStage.setScene(startScene);
         primaryStage.show();
 

@@ -139,7 +139,7 @@ public class GameScene {
             }
             scoreText.setText(account.getScore() + "");
             haveEmptyCell = check.haveEmptyCell(cells);
-            if (haveEmptyCell == -1) {
+            if (haveEmptyCell == 0) {
                 if (check.canNotMove(cells)) {
                     primaryStage.setScene(endGameScene);
                     if (account.getScore() > highScore.get()) {

@@ -46,6 +46,7 @@ public class EndGame {
     }
 
     public void endGameShow(Group root, Account account,long highScore, Color c) {
+        StartGame.difficulty = 4;
         Text text = new Text("GAME OVER");
         text = setStyle(text, 250, 200, 80);
         root.getChildren().add(text);
