@@ -6,17 +6,18 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
- * I'm not too sure what's the purpose of this class other than to get text and set font sizes
+ * Class for managing Text in cell
  */
 class TextMaker {
     private static TextMaker singleInstance = null;
-    private double length = GameScene.getLENGTH();
-    private double fontSize = (3 * length) / 7.0;
+    private final double length = GameScene.LENGTH;
+    private final double fontSize = (3 * length) / 7.0;
 
-    private TextMaker() {
 
-    }
-
+    /**
+     * Method to get a single instance of the TextMaker class
+     * @return Instance of TextMaker class
+     */
     static TextMaker getSingleInstance() {
         if (singleInstance == null)
             singleInstance = new TextMaker();
@@ -28,23 +29,17 @@ class TextMaker {
      * @param input Value to be displayed on the cell.
      * @param xCell x-axis length of the cell.
      * @param yCell y-axis length of the cell.
-     * @param root unsure what root is yet.
      * @return Displays the input value on the cell.
      */
-    Text madeText(String input, double xCell, double yCell, Group root) {
+    Text madeText(String input, double xCell, double yCell) {
         Text text = new Text(input);
-        int number = Integer.parseInt(text.getText());
-        if (number < 1024) {
-            text.setFont(Font.font(fontSize));
-        }
-        else {
-            text.setFont(Font.font(fontSize/2));
-        }
+        text.setFont(Font.font(fontSize));
         text.relocate((xCell + (1.2)* length / 7.0), (yCell + 2 * length / 7.0));
         text.setFill(Color.WHITE);
 
         return text;
     }
+
 
     /**
      * swapping the text of the first cell with the text of the second cell

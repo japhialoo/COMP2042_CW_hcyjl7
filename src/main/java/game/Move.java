@@ -4,7 +4,6 @@ package game;
  * Move class for all methods related to moving a cell.
  */
 public class Move{
-    public final static int n = 4;
     Check check = new Check();
     public void hasMoved(boolean move) {
         Check.moved = move;
@@ -12,44 +11,44 @@ public class Move{
 
     // Moving all the cells according to the direction. filters through all cells row by row
     public void left(Cell[][] cells, Account account) {
-        for (int i = 0; i < n; i++) {
-            for (int j = 1; j < n; j++) {
+        for (int i = 0; i < GameScene.n; i++) {
+            for (int j = 1; j < GameScene.n; j++) {
                 horizontally(i, j, check.passDestination(i, j, 'l', cells), -1, cells, account);
             }
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < GameScene.n; j++) {
                 cells[i][j].setModify(false);
             }
         }
     }
 
     public void right(Cell[][] cells, Account account) {
-        for (int i = 0; i < n; i++) {
-            for (int j = n - 1; j >= 0; j--) {
+        for (int i = 0; i < GameScene.n; i++) {
+            for (int j = GameScene.n - 1; j >= 0; j--) {
                 horizontally(i, j, check.passDestination(i, j, 'r', cells), 1, cells, account);
             }
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < GameScene.n; j++) {
                 cells[i][j].setModify(false);
             }
         }
     }
 
     public void up(Cell[][] cells, Account account) {
-        for (int j = 0; j < n; j++) {
-            for (int i = 1; i < n; i++) {
+        for (int j = 0; j < GameScene.n; j++) {
+            for (int i = 1; i < GameScene.n; i++) {
                 vertically(i, j, check.passDestination(i, j, 'u', cells), -1, cells, account);
             }
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < GameScene.n; i++) {
                 cells[i][j].setModify(false);
             }
         }
 
     }
     public void down(Cell[][] cells, Account account) {
-        for (int j = 0; j < n; j++) {
-            for (int i = n - 1; i >= 0; i--) {
+        for (int j = 0; j < GameScene.n; j++) {
+            for (int i = GameScene.n - 1; i >= 0; i--) {
                 vertically(i, j, check.passDestination(i, j, 'd', cells), 1, cells, account);
             }
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < GameScene.n; i++) {
                 cells[i][j].setModify(false);
             }
         }
@@ -83,6 +82,5 @@ public class Move{
             }
         }
     }
-
 
 }

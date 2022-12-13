@@ -4,11 +4,12 @@ package game;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class Cell {
-    private Rectangle rectangle;
-    private Group root;
+    private final Rectangle rectangle;
+    private final Group root;
     private Text textClass;
     private boolean modify = false;
     Move move = new Move();
@@ -44,7 +45,7 @@ public class Cell {
         rectangle.setWidth(scale);
         this.root = root;
         rectangle.setFill(Color.rgb(224, 226, 226, 0.5));
-        this.textClass = TextMaker.getSingleInstance().madeText("0", x, y, root);
+        this.textClass = TextMaker.getSingleInstance().madeText("0", x, y);
         root.getChildren().add(rectangle);
     }
 
@@ -54,7 +55,7 @@ public class Cell {
 
     /**
      *
-     * @param cell Individual cell to be swapped with current cell.
+     * @param cell Destination of current cell
      */
     void changeCell(Cell cell) {
         TextMaker.changeTwoText(textClass, cell.getTextClass());

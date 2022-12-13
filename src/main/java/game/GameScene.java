@@ -3,6 +3,8 @@ package game;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -10,34 +12,42 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class GameScene {
-    // n is used for the number of boxes on the x-axis and y-axis. used in Cell[][] 2d array to create a grid
-    private final static int n = 4;
-    // Distance between cells duh
-    private final static int distanceBetweenCells = 10;
+    public static int n = StartGame.difficulty;
+    private static final int distanceBetweenCells = 10;
     // Height used for the height of the box for the game I think will alter and find out.
-    private final static int HEIGHT = 700;
+    private static final int HEIGHT = 700;
     // Length is 700 minus 4 plus 1 times 10 divide 4 -> 700 - 12.5 -> 687.5
-    private final static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
+    public static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     // Unsure of the use of textMaker
     TextMaker textMaker = TextMaker.getSingleInstance();
-    private final Cell[][] cells = new Cell[n][n];
+    private static Cell[][] cells;
+    private int count = 0;
     private Group root;
-    //private long score = 0;
     Move move = new Move();
     Check check = new Check();
-
 
 
     static double getLENGTH() {
         return LENGTH;
     }
+    static int getN() {
+        return n;
+    }
+
+    public static void setN(int number){
+        n = number;
+        LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
+        System.out.println(n);
+        System.out.println(LENGTH);
+    }
 
     private void randomFillNumber() {
-
         Cell[][] emptyCells = new Cell[n][n];
         int a = 0;
         int b = 0;
@@ -70,12 +80,12 @@ public class GameScene {
         xCell = random.nextInt(aForBound+1);
         yCell = random.nextInt(bForBound+1);
         if (putTwo) {
-            text = textMaker.madeText("2", emptyCells[xCell][yCell].getX(), emptyCells[xCell][yCell].getY(), root);
+            text = textMaker.madeText("2", emptyCells[xCell][yCell].getX(), emptyCells[xCell][yCell].getY());
             emptyCells[xCell][yCell].setTextClass(text);
             root.getChildren().add(text);
             emptyCells[xCell][yCell].setColorByNumber(2);
         } else {
-            text = textMaker.madeText("4", emptyCells[xCell][yCell].getX(), emptyCells[xCell][yCell].getY(), root);
+            text = textMaker.madeText("4", emptyCells[xCell][yCell].getX(), emptyCells[xCell][yCell].getY());
             emptyCells[xCell][yCell].setTextClass(text);
             root.getChildren().add(text);
             emptyCells[xCell][yCell].setColorByNumber(4);
@@ -84,6 +94,8 @@ public class GameScene {
 
 
     void game(Scene gameScene, Group root,  Stage primaryStage, Scene endGameScene, Group endGameRoot, Account account, Color c) {
+        cells = new Cell[n][n];
+        System.out.println(n + " is the n value in game method");
         AtomicLong highScore = new AtomicLong(account.getScore());
         account.setScore(0);
         this.root = root;
@@ -92,8 +104,8 @@ public class GameScene {
                 cells[i][j] = new Cell((j) * LENGTH + (j + 1) * distanceBetweenCells,
                         (i) * LENGTH + (i + 1) * distanceBetweenCells, LENGTH, root);
             }
-
         }
+
 
         Text text = new Text();
         root.getChildren().add(text);
@@ -106,12 +118,13 @@ public class GameScene {
         scoreText.setFont(Font.font(20));
         scoreText.setText("0");
 
+        if (Objects.equals(c, Color.BLACK)) {
+            text.setFill(Color.WHITE);
+            scoreText.setFill(Color.WHITE);
+        }
 
         randomFillNumber();
         randomFillNumber();
-        System.out.println("Currently in game " + account.getUserName());
-
-
 
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key -> Platform.runLater(() -> {
             int haveEmptyCell;
@@ -124,7 +137,6 @@ public class GameScene {
             } else if (key.getCode() == KeyCode.RIGHT) {
                 move.right(cells, account);
             }
-            //sumCellNumbersToScore();
             scoreText.setText(account.getScore() + "");
             haveEmptyCell = check.haveEmptyCell(cells);
             if (haveEmptyCell == -1) {
@@ -141,6 +153,15 @@ public class GameScene {
             } else if(haveEmptyCell == 1 && check.moved()) {
                 randomFillNumber();
                 Check.moved =false;
+            }
+
+            if(check.have2048(cells) && count == 0) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("You Win!!");
+                alert.setHeaderText("Your Score is " + account.getScore()+"");
+                alert.setContentText("Congrats! You can continue playing :>");
+                alert.showAndWait();
+                count += 1;
             }
         }));
     }
