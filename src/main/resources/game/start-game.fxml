@@ -31,7 +31,7 @@
                   <Font name="SansSerif Bold" size="50.0" />
                </font>
             </Label>
-            <TextField fx:id="name" layoutX="200.0" layoutY="133.0" onAction="#getName" prefHeight="53.0" prefWidth="499.0" promptText="Name">
+            <TextField fx:id="name" layoutX="200.0" layoutY="133.0" prefHeight="53.0" prefWidth="499.0" promptText="Name">
                <font>
                   <Font name="Gill Sans" size="35.0" />
                </font></TextField>

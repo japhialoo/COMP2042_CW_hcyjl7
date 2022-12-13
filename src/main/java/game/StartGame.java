@@ -23,26 +23,52 @@ public class StartGame {
     ColorPicker colorPicker = new ColorPicker();
     @FXML
     Slider difficultySlider;
+    /**
+     * Number of Grids to appear of the screen.
+     */
     static int difficulty = 4;
     GameScene game = new GameScene();
     private Group gameRoot = new Group();
+    /**
+     * Username entered by the user.
+     */
     public String userName;
+    /**
+     * Color variable for the background color of the game scene and end scene.
+     * Default color set to the base game's color.
+     */
     public static Color c = Color.rgb(237, 194, 46);
+    /**
+     * Account of the current user playing the game.
+     */
     Account account;
 
 
+    /**
+     * Sets Color variable c to the color chosen by the user.
+     */
     public void setColor() {
         c = colorPicker.getValue();
     }
+
+    /**
+     * Initiates the Game Root.
+     * @param gameRoot Root of the game scene.
+     */
     public void setGameRoot(Group gameRoot) {
         this.gameRoot = gameRoot;
     }
-    public String getName() {
-        System.out.println(name.getText());
-        return userName;
-    }
+
+    /**
+     * Initiates and sets the Game Scene when user clicks the "Log In" button in the menu screen.
+     */
     public void setGameScene(ActionEvent event) {
         userName = name.getText();
+        System.out.println("User Name is " + userName);
+
+        if (name.getText().isEmpty()) {
+            userName = "Guest";
+        }
 
         if (Account.accountHaveBeenExist(userName) == null) {
             System.out.println("Account does not exist");
@@ -64,6 +90,9 @@ public class StartGame {
         game.game(gameScene, gameRoot, stage, endGameScene, endgameRoot, this.account, c);
     }
 
+    /**
+     * Sets difficulty level according to user's input in game from difficulty slider.
+     */
     public void setDifficulty(){
         int result = (int)difficultySlider.getValue();
         if (result == 1) {

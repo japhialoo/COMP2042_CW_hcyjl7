@@ -71,7 +71,7 @@ public class EndGame {
         highScoreText = setStyle(highScoreText, 500, 500, 70);
         root.getChildren().add(highScoreText);
 
-        if (c == Color.BLACK) {
+        if (Check.darkColor(c)) {
             scoreTitle.setFill(Color.WHITE);
             scoreText.setFill(Color.WHITE);
             highScoreTitle.setFill(Color.WHITE);

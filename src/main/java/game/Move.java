@@ -9,7 +9,11 @@ public class Move{
         Check.moved = move;
     }
 
-    // Moving all the cells according to the direction. filters through all cells row by row
+    /**
+     * Moving all the cells to the left. filters through all cells row by row
+     * @param cells 2D array of cells displayed on the game
+     * @param account Current account of user playing.
+     */
     public void left(Cell[][] cells, Account account) {
         for (int i = 0; i < GameScene.n; i++) {
             for (int j = 1; j < GameScene.n; j++) {
@@ -21,6 +25,11 @@ public class Move{
         }
     }
 
+    /**
+     * Moving all the cells to the right. filters through all cells row by row
+     * @param cells 2D array of cells displayed on the game
+     * @param account Current account of user playing.
+     */
     public void right(Cell[][] cells, Account account) {
         for (int i = 0; i < GameScene.n; i++) {
             for (int j = GameScene.n - 1; j >= 0; j--) {
@@ -32,6 +41,11 @@ public class Move{
         }
     }
 
+    /**
+     * Moving all the cells up. filters through all cells row by row
+     * @param cells 2D array of cells displayed on the game
+     * @param account Current account of user playing.
+     */
     public void up(Cell[][] cells, Account account) {
         for (int j = 0; j < GameScene.n; j++) {
             for (int i = 1; i < GameScene.n; i++) {
@@ -43,6 +57,12 @@ public class Move{
         }
 
     }
+
+    /**
+     * Moving all the cells down. filters through all cells row by row
+     * @param cells 2D array of cells displayed on the game
+     * @param account Current account of user playing.
+     */
     public void down(Cell[][] cells, Account account) {
         for (int j = 0; j < GameScene.n; j++) {
             for (int i = GameScene.n - 1; i >= 0; i--) {
@@ -55,6 +75,15 @@ public class Move{
 
     }
 
+    /**
+     *
+     * @param i Row index
+     * @param j Column index
+     * @param des Destination of cell
+     * @param sign Direction of movement
+     * @param cells 2D array of cells
+     * @param account Current account of user playing
+     */
     public void horizontally(int i, int j, int des, int sign, Cell[][] cells,Account account) {
         if (check.isValidDesH(i, j, des, sign, cells)) {
             cells[i][j].adder(cells[i][des + sign]);
@@ -69,6 +98,15 @@ public class Move{
         }
     }
 
+    /**
+     *
+     * @param i Row index
+     * @param j Column index
+     * @param des Destination of cell
+     * @param sign Direction of movement
+     * @param cells 2D array of cells
+     * @param account Current account of user playing
+     */
     public void vertically(int i, int j, int des, int sign, Cell[][] cells, Account account) {
         if (check.isValidDesV(i, j, des, sign, cells)) {
             cells[i][j].adder(cells[des + sign][j]);

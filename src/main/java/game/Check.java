@@ -1,17 +1,22 @@
 package game;
 
+import javafx.scene.paint.Color;
+
 /**
  * Check class for all methods in charge of validating moves and conditions.
  */
 public class Check{
     public static boolean moved = false;
 
+    /**
+     * @return Boolean value for if any cell has moved in the grid.
+     */
     public boolean moved() {
         return moved;
     }
 
     /**
-     * Method to check if neighbouring cells of current cell has the same number
+     * Checks if neighbouring cells of current cell has the same number
      * @param i Row index of the cell
      * @param j Column index of the cell
      * @param cells 2d array of cells displayed on the grid
@@ -21,8 +26,7 @@ public class Check{
         if (i < GameScene.n - 1 && j < GameScene.n - 1) {
             if (cells[i + 1][j].getNumber() == cells[i][j].getNumber())
                 return true;
-            if (cells[i][j + 1].getNumber() == cells[i][j].getNumber())
-                return true;
+            return cells[i][j + 1].getNumber() == cells[i][j].getNumber();
         }
         return false;
     }
@@ -43,16 +47,24 @@ public class Check{
         return true;
     }
 
-    public int  haveEmptyCell(Cell[][] cells) {
+    /**
+     * Checks if the grid has any empty cells.
+     * @param cells 2D array of cells in the game
+     * @return Boolean value to determine if there are any empty cells in the grid.
+     */
+    public Boolean  haveEmptyCell(Cell[][] cells) {
         for (int i = 0; i < GameScene.n; i++) {
             for (int j = 0; j < GameScene.n; j++) {
                 if (cells[i][j].getNumber() == 0)
-                    return 1;
+                    return true;
             }
         }
-        return 0;
+        return false;
     }
 
+    /**
+     * Checks if cell with value "2048" has appeared in the game.
+     */
     public boolean  have2048(Cell[][] cells) {
         for (int i = 0; i < GameScene.n; i++) {
             for (int j = 0; j < GameScene.n; j++) {
@@ -66,7 +78,6 @@ public class Check{
 
 
     /**
-     *
      * @param i Row index of the cell
      * @param j Column index of the cell
      * @param des Destination of the cell
@@ -76,16 +87,13 @@ public class Check{
      */
     public boolean isValidDesH(int i, int j, int des, int sign, Cell[][] cells) {
         if (des + sign < GameScene.n && des + sign >= 0) {
-            if (cells[i][des + sign].getNumber() == cells[i][j].getNumber() && !cells[i][des + sign].getModify()
-                    && cells[i][des + sign].getNumber() != 0 && !cells[i][j].getModify()) {
-                return true;
-            }
+            return cells[i][des + sign].getNumber() == cells[i][j].getNumber() && !cells[i][des + sign].getModify()
+                    && cells[i][des + sign].getNumber() != 0 && !cells[i][j].getModify();
         }
         return false;
     }
 
     /**
-     *
      * @param i Row index of the cell
      * @param j Column index of the cell
      * @param des Destination of the cell
@@ -95,15 +103,12 @@ public class Check{
      */
     public boolean isValidDesV(int i, int j, int des, int sign, Cell[][] cells) {
         if (des + sign < GameScene.n && des + sign >= 0)
-            if (cells[des + sign][j].getNumber() == cells[i][j].getNumber() && !cells[des + sign][j].getModify()
-                    && cells[des + sign][j].getNumber() != 0 && !cells[i][j].getModify()) {
-                return true;
-            }
+            return cells[des + sign][j].getNumber() == cells[i][j].getNumber() && !cells[des + sign][j].getModify()
+                    && cells[des + sign][j].getNumber() != 0 && !cells[i][j].getModify();
         return false;
     }
 
     /**
-     *
      * @param i Row index for cells in the grid
      * @param j Column index for cells in the grid
      * @param direct Direction of the cell in the grid
@@ -123,7 +128,6 @@ public class Check{
             }
             return coordinate;
         }
-        coordinate = j;
         if (direct == 'r') {
             for (int k = j + 1; k <= GameScene.n - 1; k++) {
                 if (cells[i][k].getNumber() != 0) {
@@ -148,7 +152,6 @@ public class Check{
             }
             return coordinate;
         }
-        coordinate = i;
         if (direct == 'u') {
             for (int k = i - 1; k >= 0; k--) {
                 if (cells[k][j].getNumber() != 0) {
@@ -161,5 +164,18 @@ public class Check{
             return coordinate;
         }
         return -1;
+    }
+
+    /**
+     * Checks if background color is a dark color.
+     * @param c Color chosen by user at menu page.
+     * @return Boolean variable if color is a dark color.
+     */
+    public static Boolean darkColor(Color c){
+        double red = c.getRed() * 255;
+        double green = c.getGreen() * 255;
+        double blue = c.getBlue() * 255;
+        double gray = 0.21 * red + 0.71 * green + 0.07 * blue;
+        return gray < 128.0;
     }
 }

@@ -5,9 +5,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
- * Class for managing Text in cell
+ * Class that manages text attribute of values in a cell.
  */
 class TextMaker {
+    /**
+     * Single Instance of TextMaker class.
+     */
     private static TextMaker singleInstance = null;
 
 
@@ -22,7 +25,7 @@ class TextMaker {
     }
 
     /**
-     *
+     * Method to make and set style of the text in the game.
      * @param input Value to be displayed on the cell.
      * @param xCell x-axis length of the cell.
      * @param yCell y-axis length of the cell.
@@ -40,7 +43,7 @@ class TextMaker {
 
 
     /**
-     * swapping the text of the first cell with the text of the second cell
+     * Swapping values of the first and second cell.
      * @param first Text of first cell to be swapped
      * @param second Text of second cell to be swapped
      */

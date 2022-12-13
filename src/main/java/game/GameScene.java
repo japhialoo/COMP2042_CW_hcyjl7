@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -12,19 +11,17 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.util.Objects;
-import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class GameScene {
+    /**
+     * Number of cells in the grid. This value will change with different difficulty levels.
+     */
     public static int n = StartGame.difficulty;
     private static final int distanceBetweenCells = 10;
-    // Height used for the height of the box for the game I think will alter and find out.
     private static final int HEIGHT = 700;
-    // Length is 700 minus 4 plus 1 times 10 divide 4 -> 700 - 12.5 -> 687.5
     public static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
-    // Unsure of the use of textMaker
     TextMaker textMaker = TextMaker.getSingleInstance();
     private static Cell[][] cells;
     private int count = 0;
@@ -32,14 +29,10 @@ public class GameScene {
     Move move = new Move();
     Check check = new Check();
 
-
-    static double getLENGTH() {
-        return LENGTH;
-    }
-    static int getN() {
-        return n;
-    }
-
+    /**
+     * Set value of N according to the Difficulty chosen.
+     * @param number Difficulty chosen in game.
+     */
     public static void setN(int number){
         n = number;
         LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
@@ -47,6 +40,9 @@ public class GameScene {
         System.out.println(LENGTH);
     }
 
+    /**
+     * Method to generate a random cell with a random number of either 2 or 4 in the game.
+     */
     private void randomFillNumber() {
         Cell[][] emptyCells = new Cell[n][n];
         int a = 0;
@@ -92,7 +88,16 @@ public class GameScene {
         }
     }
 
-
+    /**
+     * Method to call the game.
+     * @param gameScene Scene in which the game will be displayed in.
+     * @param root The root node that will inherit the elements to be rendered.
+     * @param primaryStage The stage that contains all the objects in the game.
+     * @param endGameScene Scene to display the end game window.
+     * @param endGameRoot Root node to inherit elements in the end game file to be rendered.
+     * @param account Current account of user playing the game
+     * @param c Color of the scene chosen by the user. else will be a default color.
+     */
     void game(Scene gameScene, Group root,  Stage primaryStage, Scene endGameScene, Group endGameRoot, Account account, Color c) {
         cells = new Cell[n][n];
         System.out.println(n + " is the n value in game method");
@@ -118,7 +123,8 @@ public class GameScene {
         scoreText.setFont(Font.font(20));
         scoreText.setText("0");
 
-        if (Objects.equals(c, Color.BLACK)) {
+
+        if (Check.darkColor(c)) {
             text.setFill(Color.WHITE);
             scoreText.setFill(Color.WHITE);
         }
@@ -127,7 +133,6 @@ public class GameScene {
         randomFillNumber();
 
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key -> Platform.runLater(() -> {
-            int haveEmptyCell;
             if (key.getCode() == KeyCode.DOWN) {
                 move.down(cells, account);
             } else if (key.getCode() == KeyCode.UP) {
@@ -138,19 +143,16 @@ public class GameScene {
                 move.right(cells, account);
             }
             scoreText.setText(account.getScore() + "");
-            haveEmptyCell = check.haveEmptyCell(cells);
-            if (haveEmptyCell == 0) {
-                if (check.canNotMove(cells)) {
-                    primaryStage.setScene(endGameScene);
-                    if (account.getScore() > highScore.get()) {
-                        highScore.set(account.getScore());}
-                    EndGame.getInstance().endGameShow(endGameRoot, account, highScore.get(), c);
-                    if (account.getScore() < highScore.get()) {account.setScore(highScore.get());}
-                    User.writeAllToFile();
-                    Account.printAccounts();
-                    root.getChildren().clear();
-                }
-            } else if(haveEmptyCell == 1 && check.moved()) {
+            if (!check.haveEmptyCell(cells) && check.canNotMove(cells)) {
+                primaryStage.setScene(endGameScene);
+                if (account.getScore() > highScore.get()) {
+                    highScore.set(account.getScore());}
+                EndGame.getInstance().endGameShow(endGameRoot, account, highScore.get(), c);
+                if (account.getScore() < highScore.get()) {account.setScore(highScore.get());}
+                User.writeAllToFile();
+                Account.printAccounts();
+                root.getChildren().clear();
+            } else if (check.haveEmptyCell(cells) && check.moved()){
                 randomFillNumber();
                 Check.moved =false;
             }

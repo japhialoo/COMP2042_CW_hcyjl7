@@ -7,16 +7,18 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+/**
+ * Cell class for all methods associated with altering and creating a cell.
+ */
 public class Cell {
     private final Rectangle rectangle;
     private final Group root;
     private Text textClass;
     private boolean modify = false;
-    Move move = new Move();
 
     /**
      *
-     * @param modify boolean value for if the cell was modified during an action.
+     * @param modify Boolean value for if the cell was modified during an action.
      */
     void setModify(boolean modify) {
         this.modify = modify;
@@ -24,7 +26,7 @@ public class Cell {
 
     /**
      *
-     * @return Returns a boolean value to determine if the cell has been modified.
+     * @return Boolean value to determine if the cell has been modified.
      */
     boolean getModify() {
         return modify;
@@ -49,12 +51,16 @@ public class Cell {
         root.getChildren().add(rectangle);
     }
 
+    /**
+     * Sets textClass to input text.
+     * @param textClass text to be displayed in this cell.
+     */
     void setTextClass(Text textClass) {
         this.textClass = textClass;
     }
 
     /**
-     *
+     * Swaps contents of two cells.
      * @param cell Destination of current cell
      */
     void changeCell(Cell cell) {
@@ -72,6 +78,10 @@ public class Cell {
         cell.setColorByNumber(cell.getNumber());
     }
 
+    /**
+     * Adds the value of two cells and merges them together.
+     * @param cell cell to be merged with current cell.
+     */
     void adder(Cell cell) {
         cell.getTextClass().setText((cell.getNumber() + this.getNumber()) + "");
         textClass.setText("0");
@@ -80,6 +90,10 @@ public class Cell {
         setColorByNumber(getNumber());
     }
 
+    /**
+     * Sets color of the cell according to the number of the cell.
+     * @param number Number in the cell.
+     */
     void setColorByNumber(int number) {
         switch (number) {
             case 0:
@@ -125,18 +139,34 @@ public class Cell {
 
     }
 
+    /**
+     *
+     * @return X-axis size of the cell
+     */
     double getX() {
         return rectangle.getX();
     }
 
+    /**
+     *
+     * @return Y-axis size of the cell
+     */
     double getY() {
         return rectangle.getY();
     }
 
+    /**
+     *
+     * @return Int value of the number in the cell.
+     */
     int getNumber() {
         return Integer.parseInt(textClass.getText());
     }
 
+    /**
+     *
+     * @return Text value of current cell.
+     */
     private Text getTextClass() {
         return textClass;
     }

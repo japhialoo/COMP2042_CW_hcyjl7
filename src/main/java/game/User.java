@@ -8,12 +8,24 @@ public class User implements Serializable{
     public Long highScore;
     @Serial
     private static final long serialVersionUID = 6150078625063920690L;
+    /**
+     * File that stores all Usernames and corresponding high scores.
+     */
     static final File file = new File("Users.txt");
+
+    /**
+     * Creating User
+     * @param name Name of user.
+     * @param highScore High Score of user.
+     */
     public User(String name, Long highScore) {
         this.userName = name;
         this.highScore = Objects.requireNonNullElse(highScore, 0L);
     }
 
+    /**
+     * Reads Users from file and stores values in an Array List of Accounts.
+     */
     public static void readFromFile() {
         try (FileInputStream fis = new FileInputStream(file);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
@@ -37,6 +49,9 @@ public class User implements Serializable{
         }
     }
 
+    /**
+     * Stores all user from an Array list of accounts to local file.
+     */
     public static void writeAllToFile() {
         try (FileOutputStream fileOS = new FileOutputStream(file);
              ObjectOutputStream objectOS = new ObjectOutputStream(fileOS)) {
