@@ -3,9 +3,19 @@ package game;
 import java.io.*;
 import java.util.Objects;
 
+/**
+ * Holds read and write to file methods.
+ */
 public class User implements Serializable{
+    /**
+     * Username of user.
+     */
     public String userName;
+    /**
+     * All time high-score of user.
+     */
     public Long highScore;
+
     @Serial
     private static final long serialVersionUID = 6150078625063920690L;
     /**
