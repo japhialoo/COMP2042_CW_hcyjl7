@@ -6,17 +6,13 @@ import java.util.ArrayList;
 /**
  * Class for managing methods associated to player accounts.
  */
-public class Account implements Comparable<Account>{
+public class Account {
     public long score;
     public String userName ;
     public static ArrayList<Account> accounts = new ArrayList<>();
     public Account(String name) {
         userName = name;
         score = 0;
-    }
-    @Override
-    public int compareTo(Account o) {
-        return Long.compare(o.getScore(), score);
     }
 
     /**
@@ -28,7 +24,6 @@ public class Account implements Comparable<Account>{
     }
 
     /**
-     *
      * @return Score of the account associated to it.
      */
     public long getScore() {
