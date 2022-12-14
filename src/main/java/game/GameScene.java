@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -11,6 +12,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -24,7 +26,7 @@ public class GameScene {
     public static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     TextMaker textMaker = TextMaker.getSingleInstance();
     private static Cell[][] cells;
-    private int count = 0;
+    private Boolean win = false;
     private Group root;
     Move move = new Move();
     Check check = new Check();
@@ -151,7 +153,16 @@ public class GameScene {
             }
             scoreText.setText(account.getScore() + "");
             if (!check.haveEmptyCell(cells) && check.canNotMove(cells)) {
-                primaryStage.setScene(endGameScene);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Game Over");
+                alert.setHeaderText("You Ran out of moves :(");
+                alert.setContentText("Score : " + account.getScore());
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.orElse(null) == ButtonType.OK){
+                    primaryStage.setScene(endGameScene);
+                }
+
                 if (account.getScore() > highScore.get()) {
                     highScore.set(account.getScore());}
                 EndGame.getInstance().endGameShow(endGameRoot, account, highScore.get(), c);
@@ -163,13 +174,13 @@ public class GameScene {
                 Check.moved =false;
             }
 
-            if(check.have2048(cells) && count == 0) {
+            if(check.have2048(cells) && !win) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("You Win!!");
                 alert.setHeaderText("Your Score is " + account.getScore()+"");
                 alert.setContentText("Congrats! You can continue playing :>");
                 alert.showAndWait();
-                count += 1;
+                win = true;
             }
         }));
     }
