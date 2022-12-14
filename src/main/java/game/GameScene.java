@@ -11,24 +11,53 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * Sets the game scene for the program.
+ */
 public class GameScene {
     /**
      * Number of cells in the grid. This value will change with different difficulty levels.
      */
     public static int n = StartGame.difficulty;
+    /**
+     * Distance between cells in the grid
+     */
     private static final int distanceBetweenCells = 10;
+    /**
+     * Height of the Game grid
+     */
     private static final int HEIGHT = 700;
+    /**
+     * Length of the cell
+     */
     public static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
+    /**
+     * Instance of TextMaker class.
+     */
     TextMaker textMaker = TextMaker.getSingleInstance();
+    /**
+     * 2D array of cells to be displayed on the grid.
+     */
     private static Cell[][] cells;
+    /**
+     * Checks if user has won the game by obtaining cell "2048"
+     */
     private Boolean win = false;
+    /**
+     * root node to inherit elements to be displayed
+     */
     private Group root;
+    /**
+     * Calling Move class to utilise methods.
+     */
     Move move = new Move();
+    /**
+     * Calling Check class to utilise methods.
+     */
     Check check = new Check();
 
     /**

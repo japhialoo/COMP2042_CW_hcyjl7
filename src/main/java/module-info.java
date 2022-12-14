@@ -1,4 +1,4 @@
-module com.example.demo {
+module game {
     requires javafx.controls;
     requires javafx.fxml;
 
