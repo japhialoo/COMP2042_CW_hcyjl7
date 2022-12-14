@@ -15,19 +15,40 @@ import javafx.stage.Stage;
  * Controller for start game scene
  */
 public class StartGame {
+    /**
+     * Width of the window.
+     */
     static final int WIDTH = 900;
+    /**
+     * Height of the window.
+     */
     static final int HEIGHT = 900;
+    /**
+     * For users to input their name.
+     */
     @FXML
     TextField name;
+    /**
+     * For users to pick color for game theme.
+     */
     @FXML
     ColorPicker colorPicker = new ColorPicker();
+    /**
+     * Slider for user to choose difficulty of the game.
+     */
     @FXML
     Slider difficultySlider;
     /**
      * Number of Grids to appear of the screen.
      */
     static int difficulty = 4;
+    /**
+     * To set game scene after user logs in.
+     */
     GameScene game = new GameScene();
+    /**
+     * root for the game
+     */
     private Group gameRoot = new Group();
     /**
      * Username entered by the user.
