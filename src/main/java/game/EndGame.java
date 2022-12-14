@@ -32,18 +32,35 @@ public class EndGame {
 
     }
 
+    /**
+     * @return Instance of EndGame.
+     */
     public static EndGame getInstance(){
         if(singleInstance == null)
             singleInstance= new EndGame();
         return singleInstance;
     }
 
+    /**
+     * Sets style for text
+     * @param text Text to be styled
+     * @param x X-axis location of the text
+     * @param y Y-axis location of the text
+     * @param font size of the font
+     * @return Styled text
+     */
     public Text setStyle(Text text, int x, int y, int font) {
         text.relocate(x,y);
         text.setFont(Font.font(font));
         return text;
     }
 
+    /**
+     * @param root The root node that will inherit the elements to be rendered.
+     * @param account Account of current user playing.
+     * @param highScore All time highs-core of the user.
+     * @param c Background color chosen by user at the start of the game.
+     */
     public void endGameShow(Group root, Account account,long highScore, Color c) {
         StartGame.difficulty = 4;
         Text text = new Text("GAME OVER");
