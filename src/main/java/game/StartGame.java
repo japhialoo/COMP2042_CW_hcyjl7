@@ -64,19 +64,14 @@ public class StartGame {
      */
     public void setGameScene(ActionEvent event) {
         userName = name.getText();
-        System.out.println("User Name is " + userName);
 
         if (name.getText().isEmpty()) {
             userName = "Guest";
         }
-
         if (Account.accountHaveBeenExist(userName) == null) {
-            System.out.println("Account does not exist");
             this.account = Account.makeNewAccount(userName);
-            System.out.println("Created " + this.account.getUserName());
         }
         else {
-            System.out.println("Account Exists");
             this.account = Account.accountHaveBeenExist(userName);
         }
 
