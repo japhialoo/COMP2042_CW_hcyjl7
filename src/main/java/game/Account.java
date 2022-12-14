@@ -43,12 +43,6 @@ public class Account {
     public String getUserName() {
         return userName;
     }
-    static void printAccounts() {
-        for (Account account : accounts) {
-            System.out.println("name: " + account.getUserName());
-            System.out.println(("score: " + account.getScore()));
-        }
-    }
 
     /**
      * Checks if an account under userName exists in our file.
