@@ -7,9 +7,23 @@ import java.util.ArrayList;
  * Class for managing methods associated to player accounts.
  */
 public class Account {
+    /**
+     * Keeps track of score in game
+     */
     public long score;
+    /**
+     * Username of user playing
+     */
     public String userName ;
+    /**
+     * Array List of accounts to store all users that have played the game.
+     */
     public static ArrayList<Account> accounts = new ArrayList<>();
+
+    /**
+     * Creates a new account.
+     * @param name Username of new player.
+     */
     public Account(String name) {
         userName = name;
         score = 0;
