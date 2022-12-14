@@ -4,20 +4,31 @@ package game;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
  * Cell class for all methods associated with altering and creating a cell.
  */
 public class Cell {
+    /**
+     * Shape of the cell.
+     */
     private final Rectangle rectangle;
+    /**
+     * Root of the cell.
+     */
     private final Group root;
+    /**
+     * Text to be displayed in the cell.
+     */
     private Text textClass;
+    /**
+     * Checks if a cell has been modified.
+     */
     private boolean modify = false;
 
     /**
-     *
+     * Sets boolean value of modify.
      * @param modify Boolean value for if the cell was modified during an action.
      */
     void setModify(boolean modify) {
@@ -25,15 +36,15 @@ public class Cell {
     }
 
     /**
-     *
+     * Checks if a cell has been modified.
      * @return Boolean value to determine if the cell has been modified.
      */
     boolean getModify() {
-        return modify;
+        return !modify;
     }
 
     /**
-     *
+     * Sets the variables of current cell.
      * @param x sets the scale for the x-axis of the cell
      * @param y sets the scale for the y-axis of the cell
      * @param scale scales the x-axis and y-axis accordingly
@@ -96,51 +107,24 @@ public class Cell {
      */
     void setColorByNumber(int number) {
         switch (number) {
-            case 0:
-                rectangle.setFill(Color.rgb(224, 226, 226, 0.5));
-                break;
-            case 2:
-                rectangle.setFill(Color.rgb(232, 255, 100, 0.5));
-                break;
-            case 4:
-                rectangle.setFill(Color.rgb(232, 220, 50, 0.5));
-                break;
-            case 8:
-                rectangle.setFill(Color.rgb(232, 200, 44, 0.8));
-                break;
-            case 16:
-                rectangle.setFill(Color.rgb(232, 170, 44, 0.8));
-                break;
-            case 32:
-                rectangle.setFill(Color.rgb(180, 120, 44, 0.7));
-                break;
-            case 64:
-                rectangle.setFill(Color.rgb(180, 100, 44, 0.7));
-                break;
-            case 128:
-                rectangle.setFill(Color.rgb(180, 80, 44, 0.7));
-                break;
-            case 256:
-                rectangle.setFill(Color.rgb(180, 60, 44, 0.8));
-                break;
-            case 512:
-                rectangle.setFill(Color.rgb(180, 30, 44, 0.8));
-                break;
-            case 1024:
-                rectangle.setFill(Color.rgb(250, 0, 44, 0.8));
-                break;
-            case 2048:
-                rectangle.setFill(Color.rgb(250,0,0,1));
-                break;
-            default:
-                rectangle.setFill(Color.rgb(0,0,0,1));
-
+            case 0 -> rectangle.setFill(Color.rgb(224, 226, 226, 0.5));
+            case 2 -> rectangle.setFill(Color.rgb(232, 255, 100, 0.5));
+            case 4 -> rectangle.setFill(Color.rgb(232, 220, 50, 0.5));
+            case 8 -> rectangle.setFill(Color.rgb(232, 200, 44, 0.8));
+            case 16 -> rectangle.setFill(Color.rgb(232, 170, 44, 0.8));
+            case 32 -> rectangle.setFill(Color.rgb(180, 120, 44, 0.7));
+            case 64 -> rectangle.setFill(Color.rgb(180, 100, 44, 0.7));
+            case 128 -> rectangle.setFill(Color.rgb(180, 80, 44, 0.7));
+            case 256 -> rectangle.setFill(Color.rgb(180, 60, 44, 0.8));
+            case 512 -> rectangle.setFill(Color.rgb(180, 30, 44, 0.8));
+            case 1024 -> rectangle.setFill(Color.rgb(250, 0, 44, 0.8));
+            case 2048 -> rectangle.setFill(Color.rgb(250, 0, 0, 1));
+            default -> rectangle.setFill(Color.rgb(0, 0, 0, 1));
         }
 
     }
 
     /**
-     *
      * @return X-axis size of the cell
      */
     double getX() {
@@ -148,7 +132,6 @@ public class Cell {
     }
 
     /**
-     *
      * @return Y-axis size of the cell
      */
     double getY() {
@@ -156,7 +139,6 @@ public class Cell {
     }
 
     /**
-     *
      * @return Int value of the number in the cell.
      */
     int getNumber() {
@@ -164,7 +146,6 @@ public class Cell {
     }
 
     /**
-     *
      * @return Text value of current cell.
      */
     private Text getTextClass() {
