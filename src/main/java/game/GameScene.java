@@ -36,8 +36,6 @@ public class GameScene {
     public static void setN(int number){
         n = number;
         LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
-        System.out.println(n);
-        System.out.println(LENGTH);
     }
 
     /**
@@ -100,7 +98,6 @@ public class GameScene {
      */
     void game(Scene gameScene, Group root,  Stage primaryStage, Scene endGameScene, Group endGameRoot, Account account, Color c) {
         cells = new Cell[n][n];
-        System.out.println(n + " is the n value in game method");
         AtomicLong highScore = new AtomicLong(account.getScore());
         account.setScore(0);
         this.root = root;
@@ -122,6 +119,16 @@ public class GameScene {
         scoreText.relocate(750, 150);
         scoreText.setFont(Font.font(20));
         scoreText.setText("0");
+        Text userText = new Text();
+        root.getChildren().add(userText);
+        userText.setText("USER :");
+        userText.setFont(Font.font(30));
+        userText.relocate(750, 300);
+        Text nameText = new Text();
+        root.getChildren().add(nameText);
+        nameText.setText(account.getUserName());
+        nameText.relocate(750, 350);
+        nameText.setFont(Font.font(20));
 
 
         if (Check.darkColor(c)) {
@@ -150,7 +157,6 @@ public class GameScene {
                 EndGame.getInstance().endGameShow(endGameRoot, account, highScore.get(), c);
                 if (account.getScore() < highScore.get()) {account.setScore(highScore.get());}
                 User.writeAllToFile();
-                Account.printAccounts();
                 root.getChildren().clear();
             } else if (check.haveEmptyCell(cells) && check.moved()){
                 randomFillNumber();
