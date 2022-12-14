@@ -19,18 +19,35 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
 
-
+/**
+ * In charge of the end game scene for the program.
+ */
 public class EndGame {
 
+    /**
+     * Contains all objects in end game.
+     */
     private Stage stage;
+    /**
+     * To set scene of the window.
+     */
     private Scene scene;
+    /**
+     * Width of the window.
+     */
     static final int WIDTH = 900;
+    /**
+     * Height of the window
+     */
     static final int HEIGHT = 900;
+    /**
+     * To set Game Scene in Retry condition.
+     */
     GameScene game = new GameScene();
+    /**
+     * For other classes to get instance of this class.
+     */
     private static EndGame singleInstance = null;
-    private EndGame(){
-
-    }
 
     /**
      * @return Instance of EndGame.
