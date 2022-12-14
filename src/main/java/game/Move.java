@@ -4,7 +4,15 @@ package game;
  * Move class for all methods related to moving a cell.
  */
 public class Move{
+    /**
+     * Calls checking methods for certain conditions.
+     */
     Check check = new Check();
+
+    /**
+     * Assigns boolean value to move
+     * @param move Boolean value for if a cell has moved.
+     */
     public void hasMoved(boolean move) {
         Check.moved = move;
     }
