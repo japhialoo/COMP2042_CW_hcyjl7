@@ -2,7 +2,6 @@ package game;
 
 import java.util.ArrayList;
 
-
 /**
  * Class for managing methods associated to player accounts
  *
@@ -23,7 +22,8 @@ public class Account {
     public static ArrayList<Account> accounts = new ArrayList<>();
 
     /**
-     * Creates a new account
+     * Constructs a new account with name input.
+     * Score in new account will be set to 0.
      * @param name Username of new player
      */
     public Account(String name) {
@@ -32,7 +32,9 @@ public class Account {
     }
 
     /**
-     * Adds values to user's score in game
+     * When user is able to merge values on the board, the merged value is added to the score.
+     * Merge value will vary with difficulty level chosen.
+     * Value will be halved in easy mode, remains the same in normal mode, and doubled in hard mode.
      * @param score Score to be added to the total score
      */
     public void addToScore(long score) {

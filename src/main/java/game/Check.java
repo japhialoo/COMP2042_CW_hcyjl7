@@ -3,7 +3,7 @@ package game;
 import javafx.scene.paint.Color;
 
 /**
- * Check class for all methods in charge of validating moves and conditions
+ * Check class for all methods in charge of validating moves and checking conditions.
  *
  * @author japhialoo
  */
@@ -14,7 +14,7 @@ public class Check{
     public static boolean moved = false;
 
     /**
-     * Checks if cells have moved
+     * Checks if any numbers on the grid have moved.
      * @return Boolean value for if any cell has moved in the grid
      */
     public boolean moved() {
@@ -22,7 +22,7 @@ public class Check{
     }
 
     /**
-     * Checks if neighbouring cells of current cell has the same number
+     * Takes in Cells from the grid displayed in the game and checks for neighbouring right and bottom cells values.
      * @param i Row index of the cell
      * @param j Column index of the cell
      * @param cells 2d array of cells displayed on the grid
@@ -38,7 +38,7 @@ public class Check{
     }
 
     /**
-     * Checks if the grid is full and if there are same numbered cells
+     * Takes in the 2D array of cells on the grid and determines if any cells can be merged creating a move for the user.
      * @param cells 2d array of cells displayed on the grid
      * @return Boolean value to determine if any cells can move
      */
@@ -54,7 +54,7 @@ public class Check{
     }
 
     /**
-     * Checks if the grid has any empty cells
+     * Checks if the grid shown to the user in game has any empty cells.
      * @param cells 2D array of cells in the game
      * @return Boolean value to determine if there are any empty cells in the grid
      */
@@ -69,7 +69,7 @@ public class Check{
     }
 
     /**
-     * Checks if cell with value "2048" has appeared in the game
+     * Checks if cell with value "2048" has appeared in the game. This is the win condition for the game
      * @param cells 2D array of cells shown in game
      * @return True if 2048 is in the grid
      */
@@ -86,13 +86,14 @@ public class Check{
 
 
     /**
-     * Checks if two cells can be merged horizontally.
+     * Takes in the index values of a cell and its destination and checks if it can be
+     * merged with the number it is approaching horizontally
      * @param i Row index of the cell
      * @param j Column index of the cell
      * @param des Destination of the cell
      * @param sign Determines direction. 1 and -1
      * @param cells Individual cells in the grid
-     * @return Boolean value of whether the Horizontal destination is valid.
+     * @return Boolean value of whether the Horizontal destination is valid
      */
     public boolean isValidDesH(int i, int j, int des, int sign, Cell[][] cells) {
         if (des + sign < GameScene.n && des + sign >= 0) {
@@ -103,13 +104,14 @@ public class Check{
     }
 
     /**
-     * Checks if two cells can be merged vertically.
+     * Takes in the index values of a cell and its destination and checks if it can be
+     * merged with the number it is approaching vertically
      * @param i Row index of the cell
      * @param j Column index of the cell
      * @param des Destination of the cell
      * @param sign Determines direction. 1 and -1
      * @param cells Individual cells in the grid
-     * @return Boolean value of whether the Vertical destination is valid.
+     * @return Boolean value of whether the Vertical destination is valid
      */
     public boolean isValidDesV(int i, int j, int des, int sign, Cell[][] cells) {
         if (des + sign < GameScene.n && des + sign >= 0)
@@ -119,7 +121,7 @@ public class Check{
     }
 
     /**
-     * Finds destination of current cell
+     * Takes in a cell from the grid and checks for the farthest empty cell it can reach according to its direction.
      * @param i Row index for cells in the grid
      * @param j Column index for cells in the grid
      * @param direct Direction of the cell in the grid
@@ -178,7 +180,8 @@ public class Check{
     }
 
     /**
-     * Checks if background color is a dark color.
+     * Takes in the color chosen by the user at the start of the game and converts it to grayscale.
+     * Then compares the grayscale value to a threshold value to determine if it is a dark color.
      * @param c Color chosen by user at menu page.
      * @return Boolean variable if color is a dark color.
      */

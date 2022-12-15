@@ -46,6 +46,12 @@ public class EndGame {
      * To set Game Scene in Retry condition
      */
     GameScene game = new GameScene();
+
+    /**
+     * Constructs EndGame class.
+     */
+    public EndGame(){}
+
     /**
      * For other classes to get instance of this class
      */
@@ -62,7 +68,7 @@ public class EndGame {
     }
 
     /**
-     * Sets style for text
+     * Sets style for text to be displayed on the screen.
      * @param text Text to be styled
      * @param x X-axis location of the text
      * @param y Y-axis location of the text
@@ -84,6 +90,7 @@ public class EndGame {
      */
     public void endGameShow(Group root, Account account,long highScore, Color c) {
         StartGame.difficulty = 4;
+        StartGame.c = Color.rgb(237, 194, 46);
         Text text = new Text("GAME OVER");
         text = setStyle(text, 250, 200, 80);
         root.getChildren().add(text);

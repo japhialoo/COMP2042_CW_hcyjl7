@@ -26,7 +26,7 @@ public class User implements Serializable{
     static final File file = new File("Users.txt");
 
     /**
-     * Creating User
+     * Constructs User objects to be written into a local file.
      * @param name Name of user
      * @param highScore High Score of user
      */
@@ -36,7 +36,7 @@ public class User implements Serializable{
     }
 
     /**
-     * Reads Users from file and stores values in an Array List of Accounts
+     * Reads Users name and high-scores from the Users.txt file and stores values in an Array List of Accounts
      */
     public static void readFromFile() {
         try (FileInputStream fis = new FileInputStream(file);
@@ -49,8 +49,6 @@ public class User implements Serializable{
                     Account account = new Account(user.userName);
                     account.setScore(user.highScore);
                     Account.accounts.add(account);
-                    System.out.println("Name : " + user.userName);
-                    System.out.println("Score : " + user.highScore);
                 }
                 else {
                     cont = false;
@@ -62,7 +60,7 @@ public class User implements Serializable{
     }
 
     /**
-     * Stores all user from an Array list of accounts to local file
+     * Retrieves all Accounts stored in an Array List of accounts from Account and creates User objects to be written into the Users.txt file.
      */
     public static void writeAllToFile() {
         try (FileOutputStream fileOS = new FileOutputStream(file);

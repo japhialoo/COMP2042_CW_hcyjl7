@@ -50,7 +50,7 @@ public class GameScene {
      */
     private Boolean win = false;
     /**
-     * root node to inherit elements to be displayed
+     * Root node to inherit elements to be displayed
      */
     private Group root;
     /**
@@ -186,7 +186,7 @@ public class GameScene {
             if (!check.haveEmptyCell(cells) && check.canNotMove(cells)) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Game Over");
-                alert.setHeaderText("You Ran out of moves :(");
+                alert.setHeaderText("You ran out of moves :(");
                 alert.setContentText("Score : " + account.getScore());
 
                 Optional<ButtonType> result = alert.showAndWait();
@@ -196,7 +196,9 @@ public class GameScene {
 
                 if (account.getScore() > highScore.get()) {
                     highScore.set(account.getScore());}
+
                 EndGame.getInstance().endGameShow(endGameRoot, account, highScore.get(), c);
+
                 if (account.getScore() < highScore.get()) {account.setScore(highScore.get());}
                 User.writeAllToFile();
                 root.getChildren().clear();

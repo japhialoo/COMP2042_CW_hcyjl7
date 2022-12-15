@@ -20,7 +20,7 @@ public class Move{
     }
 
     /**
-     * Moving all the cells to the left. filters through all cells row by row
+     * Moving all the cells on the grid to the left and resets their modify value to false after every move.
      * @param cells 2D array of cells displayed on the game
      * @param account Current account of user playing
      */
@@ -36,7 +36,7 @@ public class Move{
     }
 
     /**
-     * Moving all the cells to the right. filters through all cells row by row
+     * Moving all the cells to the right and resets their modify value to false after every move.
      * @param cells 2D array of cells displayed on the game
      * @param account Current account of user playing
      */
@@ -52,7 +52,7 @@ public class Move{
     }
 
     /**
-     * Moving all the cells up. filters through all cells row by row
+     * Moving all the cells up and resets their modify value to false after every move.
      * @param cells 2D array of cells displayed on the game
      * @param account Current account of user playing
      */
@@ -69,7 +69,7 @@ public class Move{
     }
 
     /**
-     * Moving all the cells down. filters through all cells row by row
+     * Moving all the cells down and resets their modify value to false after every move.
      * @param cells 2D array of cells displayed on the game
      * @param account Current account of user playing
      */
@@ -86,7 +86,7 @@ public class Move{
     }
 
     /**
-     * Moves cells horizontally
+     * Moves and merges cells horizontally based on the direction pressed by the user.
      * @param i Row index
      * @param j Column index
      * @param des Destination of cell
@@ -115,7 +115,7 @@ public class Move{
     }
 
     /**
-     * Moves cells vertically
+     * Moves and merges cells vertically based on the direction pressed by the user
      * @param i Row index
      * @param j Column index
      * @param des Destination of cell

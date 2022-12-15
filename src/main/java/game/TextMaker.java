@@ -9,7 +9,7 @@ import javafx.scene.text.Text;
  *
  * @author japhialoo-modified
  */
-class TextMaker {
+public class TextMaker {
     /**
      * Single Instance of TextMaker class
      */
@@ -20,14 +20,14 @@ class TextMaker {
      * Method to get a single instance of the TextMaker class
      * @return Instance of TextMaker class
      */
-    static TextMaker getSingleInstance() {
+    public static TextMaker getSingleInstance() {
         if (singleInstance == null)
             singleInstance = new TextMaker();
         return singleInstance;
     }
 
     /**
-     * Method to make and set style of the text in the game
+     * Constructs and sets the style of a given text to be displayed on the cells in the grid.
      * @param input Value to be displayed on the cell
      * @param xCell x-axis length of the cell
      * @param yCell y-axis length of the cell
@@ -45,11 +45,11 @@ class TextMaker {
 
 
     /**
-     * Swapping values of the first and second cell
+     * Takes in to texts and swaps their values.
      * @param first Text of first cell to be swapped
      * @param second Text of second cell to be swapped
      */
-    static void changeTwoText(Text first, Text second) {
+    public static void changeTwoText(Text first, Text second) {
         String temp;
         temp = first.getText();
         first.setText(second.getText());
