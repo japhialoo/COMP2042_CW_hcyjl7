@@ -20,6 +20,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
+ * @author japhialoo-modified
  * In charge of the end game scene for the program.
  */
 public class EndGame {

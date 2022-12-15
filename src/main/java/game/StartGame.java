@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
+ * @author japhialoo
  * Controller for start game scene
  */
 public class StartGame {
@@ -89,11 +90,11 @@ public class StartGame {
         if (name.getText().isEmpty()) {
             userName = "Guest";
         }
-        if (Account.accountHaveBeenExist(userName) == null) {
+        if (Account.accountExists(userName) == null) {
             this.account = Account.makeNewAccount(userName);
         }
         else {
-            this.account = Account.accountHaveBeenExist(userName);
+            this.account = Account.accountExists(userName);
         }
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

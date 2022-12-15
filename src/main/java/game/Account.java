@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 /**
+ * @author japhialoo-modifed
  * Class for managing methods associated to player accounts.
  */
 public class Account {
@@ -63,7 +64,7 @@ public class Account {
      * @param userName Username of current player playing the game
      * @return Account of the user if it exists within our file if not will return null.
      */
-    static Account accountHaveBeenExist(String userName){
+    static Account accountExists(String userName){
         for(Account account : accounts){
             if(account.getUserName().equals(userName)){
                 return account;

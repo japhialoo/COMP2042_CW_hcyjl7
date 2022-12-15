@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.Objects;
 
 /**
+ * @author japhialoo
  * Holds read and write to file methods.
  */
 public class User implements Serializable{

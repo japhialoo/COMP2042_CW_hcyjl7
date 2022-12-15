@@ -7,6 +7,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 /**
+ * @author japhialoo-modified
  * Cell class for all methods associated with altering and creating a cell.
  */
 public class Cell {

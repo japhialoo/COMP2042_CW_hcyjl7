@@ -16,6 +16,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
+ * @author japhialoo-modified
  * In charge of the game scene for the program.
  */
 public class GameScene {
