@@ -3,8 +3,9 @@ package game;
 import javafx.scene.paint.Color;
 
 /**
- * @author japhialoo
  * Check class for all methods in charge of validating moves and conditions.
+ * 
+ * @author japhialoo
  */
 public class Check{
     public static boolean moved = false;

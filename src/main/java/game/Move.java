@@ -1,8 +1,9 @@
 package game;
 
 /**
- * @author japhialoo
  * Move class for all methods related to moving a cell.
+ *
+ * @author japhialoo
  */
 public class Move{
     /**

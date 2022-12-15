@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 
 /**
- * @author japhialoo-modifed
  * Class for managing methods associated to player accounts.
+ *
+ * @author japhialoo-modifed
  */
 public class Account {
     /**

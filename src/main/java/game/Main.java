@@ -8,8 +8,9 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
+ * Main class to run the program
+ *
  * @author japhialoo-modified
- * Main method to run the program
  */
 public class   Main extends Application {
 

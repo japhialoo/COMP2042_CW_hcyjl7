@@ -5,8 +5,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
- * @author japhialoo-modified
  * Class that manages text attribute of values in a cell.
+ *
+ * @author japhialoo-modified
  */
 class TextMaker {
     /**

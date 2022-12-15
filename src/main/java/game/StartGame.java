@@ -12,8 +12,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- * @author japhialoo
  * Controller for start game scene
+ *
+ * @author japhialoo
  */
 public class StartGame {
     /**
