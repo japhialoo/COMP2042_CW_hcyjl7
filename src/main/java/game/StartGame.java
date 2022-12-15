@@ -84,6 +84,7 @@ public class StartGame {
 
     /**
      * Initiates and sets the Game Scene when user clicks the "Log In" button in the menu screen.
+     * @param event When user clicks log-in button.
      */
     public void setGameScene(ActionEvent event) {
         userName = name.getText();

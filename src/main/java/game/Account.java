@@ -40,6 +40,7 @@ public class Account {
     }
 
     /**
+     * Gets user's score
      * @return Score of the account associated to it.
      */
     public long getScore() {
@@ -53,7 +54,7 @@ public class Account {
     public void setScore(long num) {score = num;}
 
     /**
-     *
+     * Gets user's name
      * @return Username associated to the account being used.
      */
     public String getUserName() {

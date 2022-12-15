@@ -86,7 +86,7 @@ public class Move{
     }
 
     /**
-     *
+     * Moves cells horizontally.
      * @param i Row index
      * @param j Column index
      * @param des Destination of cell
@@ -115,7 +115,7 @@ public class Move{
     }
 
     /**
-     *
+     * Moves cells vertically
      * @param i Row index
      * @param j Column index
      * @param des Destination of cell

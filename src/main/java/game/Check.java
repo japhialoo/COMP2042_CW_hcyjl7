@@ -4,13 +4,17 @@ import javafx.scene.paint.Color;
 
 /**
  * Check class for all methods in charge of validating moves and conditions.
- * 
+ *
  * @author japhialoo
  */
 public class Check{
+    /**
+     * Boolean value for if cells have moved or not.
+     */
     public static boolean moved = false;
 
     /**
+     * Checks if cells have moved.
      * @return Boolean value for if any cell has moved in the grid.
      */
     public boolean moved() {
@@ -66,6 +70,8 @@ public class Check{
 
     /**
      * Checks if cell with value "2048" has appeared in the game.
+     * @param cells 2D array of cells shown in game
+     * @return True if 2048 is in the grid.
      */
     public boolean  have2048(Cell[][] cells) {
         for (int i = 0; i < GameScene.n; i++) {
@@ -80,12 +86,13 @@ public class Check{
 
 
     /**
+     * Checks if two cells can be merged horizontally.
      * @param i Row index of the cell
      * @param j Column index of the cell
      * @param des Destination of the cell
      * @param sign Determines direction. 1 and -1
      * @param cells Individual cells in the grid
-     * @return Returns a Boolean value of whether the Horizontal destination is valid.
+     * @return Boolean value of whether the Horizontal destination is valid.
      */
     public boolean isValidDesH(int i, int j, int des, int sign, Cell[][] cells) {
         if (des + sign < GameScene.n && des + sign >= 0) {
@@ -96,12 +103,13 @@ public class Check{
     }
 
     /**
+     * Checks if two cells can be merged vertically.
      * @param i Row index of the cell
      * @param j Column index of the cell
      * @param des Destination of the cell
      * @param sign Determines direction. 1 and -1
      * @param cells Individual cells in the grid
-     * @return Returns a Boolean value of whether the Vertical destination is valid.
+     * @return Boolean value of whether the Vertical destination is valid.
      */
     public boolean isValidDesV(int i, int j, int des, int sign, Cell[][] cells) {
         if (des + sign < GameScene.n && des + sign >= 0)
@@ -111,11 +119,12 @@ public class Check{
     }
 
     /**
+     * Finds destination of current cell
      * @param i Row index for cells in the grid
      * @param j Column index for cells in the grid
      * @param direct Direction of the cell in the grid
      * @param cells Individual cells in the grid
-     * @return Returns Coordinate value of the cells destination in the grid
+     * @return Coordinate value of the cells destination in the grid
      */
     public int passDestination(int i, int j, char direct, Cell[][] cells) {
         int coordinate = j;

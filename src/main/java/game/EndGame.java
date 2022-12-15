@@ -52,6 +52,7 @@ public class EndGame {
     private static EndGame singleInstance = null;
 
     /**
+     * Gets a single instance of EndGame class.
      * @return Instance of EndGame.
      */
     public static EndGame getInstance(){
@@ -75,6 +76,7 @@ public class EndGame {
     }
 
     /**
+     * Displays end game scene of the game.
      * @param root The root node that will inherit the elements to be rendered.
      * @param account Account of current user playing.
      * @param highScore All time highs-core of the user.
