@@ -16,13 +16,13 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * In charge of the game scene for the program.
+ * In charge of the game scene for the program
  *
  * @author japhialoo-modified
  */
 public class GameScene {
     /**
-     * Number of cells in the grid. This value will change with different difficulty levels.
+     * Number of cells in the grid. This value will change with different difficulty levels
      */
     public static int n = StartGame.difficulty;
     /**
@@ -38,11 +38,11 @@ public class GameScene {
      */
     public static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     /**
-     * Instance of TextMaker class.
+     * Instance of TextMaker class
      */
     TextMaker textMaker = TextMaker.getSingleInstance();
     /**
-     * 2D array of cells to be displayed on the grid.
+     * 2D array of cells to be displayed on the grid
      */
     private static Cell[][] cells;
     /**
@@ -54,17 +54,17 @@ public class GameScene {
      */
     private Group root;
     /**
-     * Calling Move class to utilise methods.
+     * Calling Move class to utilise methods
      */
     Move move = new Move();
     /**
-     * Calling Check class to utilise methods.
+     * Calling Check class to utilise methods
      */
     Check check = new Check();
 
     /**
-     * Set value of N according to the Difficulty chosen.
-     * @param number Difficulty chosen in game.
+     * Set value of N according to the Difficulty chosen
+     * @param number Difficulty chosen in game
      */
     public static void setN(int number){
         n = number;
@@ -72,7 +72,7 @@ public class GameScene {
     }
 
     /**
-     * Method to generate a random cell with a random number of either 2 or 4 in the game.
+     * Method to generate a random cell with a random number of either 2 or 4 in the game
      */
     private void randomFillNumber() {
         Cell[][] emptyCells = new Cell[n][n];
@@ -120,14 +120,14 @@ public class GameScene {
     }
 
     /**
-     * Method to call the game.
-     * @param gameScene Scene in which the game will be displayed in.
-     * @param root The root node that will inherit the elements to be rendered.
-     * @param primaryStage The stage that contains all the objects in the game.
-     * @param endGameScene Scene to display the end game window.
-     * @param endGameRoot Root node to inherit elements in the end game file to be rendered.
+     * Method to call the game
+     * @param gameScene Scene in which the game will be displayed in
+     * @param root The root node that will inherit the elements to be rendered
+     * @param primaryStage The stage that contains all the objects in the game
+     * @param endGameScene Scene to display the end game window
+     * @param endGameRoot Root node to inherit elements in the end game file to be rendered
      * @param account Current account of user playing the game
-     * @param c Color of the scene chosen by the user. else will be a default color.
+     * @param c Color of the scene chosen by the user. else will be a default color
      */
     void game(Scene gameScene, Group root,  Stage primaryStage, Scene endGameScene, Group endGameRoot, Account account, Color c) {
         cells = new Cell[n][n];

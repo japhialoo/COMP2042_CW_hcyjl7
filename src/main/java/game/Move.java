@@ -1,19 +1,19 @@
 package game;
 
 /**
- * Move class for all methods related to moving a cell.
+ * Move class for all methods related to moving a cell
  *
  * @author japhialoo
  */
 public class Move{
     /**
-     * Calls checking methods for certain conditions.
+     * Calls checking methods for certain conditions
      */
     Check check = new Check();
 
     /**
      * Assigns boolean value to move
-     * @param move Boolean value for if a cell has moved.
+     * @param move Boolean value for if a cell has moved
      */
     public void hasMoved(boolean move) {
         Check.moved = move;
@@ -22,7 +22,7 @@ public class Move{
     /**
      * Moving all the cells to the left. filters through all cells row by row
      * @param cells 2D array of cells displayed on the game
-     * @param account Current account of user playing.
+     * @param account Current account of user playing
      */
     public void left(Cell[][] cells, Account account) {
         for (int i = 0; i < GameScene.n; i++) {
@@ -38,7 +38,7 @@ public class Move{
     /**
      * Moving all the cells to the right. filters through all cells row by row
      * @param cells 2D array of cells displayed on the game
-     * @param account Current account of user playing.
+     * @param account Current account of user playing
      */
     public void right(Cell[][] cells, Account account) {
         for (int i = 0; i < GameScene.n; i++) {
@@ -54,7 +54,7 @@ public class Move{
     /**
      * Moving all the cells up. filters through all cells row by row
      * @param cells 2D array of cells displayed on the game
-     * @param account Current account of user playing.
+     * @param account Current account of user playing
      */
     public void up(Cell[][] cells, Account account) {
         for (int j = 0; j < GameScene.n; j++) {
@@ -71,7 +71,7 @@ public class Move{
     /**
      * Moving all the cells down. filters through all cells row by row
      * @param cells 2D array of cells displayed on the game
-     * @param account Current account of user playing.
+     * @param account Current account of user playing
      */
     public void down(Cell[][] cells, Account account) {
         for (int j = 0; j < GameScene.n; j++) {
@@ -86,7 +86,7 @@ public class Move{
     }
 
     /**
-     * Moves cells horizontally.
+     * Moves cells horizontally
      * @param i Row index
      * @param j Column index
      * @param des Destination of cell

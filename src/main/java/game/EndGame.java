@@ -20,22 +20,22 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * In charge of the end game scene for the program.
+ * In charge of the end game scene for the program
  *
  * @author japhialoo-modified
  */
 public class EndGame {
 
     /**
-     * Contains all objects in end game.
+     * Contains all objects in end game
      */
     private Stage stage;
     /**
-     * To set scene of the window.
+     * To set scene of the window
      */
     private Scene scene;
     /**
-     * Width of the window.
+     * Width of the window
      */
     static final int WIDTH = 900;
     /**
@@ -43,17 +43,17 @@ public class EndGame {
      */
     static final int HEIGHT = 900;
     /**
-     * To set Game Scene in Retry condition.
+     * To set Game Scene in Retry condition
      */
     GameScene game = new GameScene();
     /**
-     * For other classes to get instance of this class.
+     * For other classes to get instance of this class
      */
     private static EndGame singleInstance = null;
 
     /**
-     * Gets a single instance of EndGame class.
-     * @return Instance of EndGame.
+     * Gets a single instance of EndGame class
+     * @return Instance of EndGame
      */
     public static EndGame getInstance(){
         if(singleInstance == null)
@@ -76,11 +76,11 @@ public class EndGame {
     }
 
     /**
-     * Displays end game scene of the game.
-     * @param root The root node that will inherit the elements to be rendered.
-     * @param account Account of current user playing.
-     * @param highScore All time highs-core of the user.
-     * @param c Background color chosen by user at the start of the game.
+     * Displays end game scene of the game
+     * @param root The root node that will inherit the elements to be rendered
+     * @param account Account of current user playing
+     * @param highScore All time highs-core of the user
+     * @param c Background color chosen by user at the start of the game
      */
     public void endGameShow(Group root, Account account,long highScore, Color c) {
         StartGame.difficulty = 4;

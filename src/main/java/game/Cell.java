@@ -1,52 +1,51 @@
 package game;
 
-
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 /**
- * Cell class for all methods associated with altering and creating a cell.
+ * Cell class for all methods associated with altering and creating a cell
  *
  * @author japhialoo-modified
  */
 public class Cell {
     /**
-     * Shape of the cell.
+     * Shape of the cell
      */
     private final Rectangle rectangle;
     /**
-     * Root of the cell.
+     * Root of the cell
      */
     private final Group root;
     /**
-     * Text to be displayed in the cell.
+     * Text to be displayed in the cell
      */
     private Text textClass;
     /**
-     * Checks if a cell has been modified.
+     * Checks if a cell has been modified
      */
     private boolean modify = false;
 
     /**
-     * Sets boolean value of modify.
-     * @param modify Boolean value for if the cell was modified during an action.
+     * Sets boolean value of modify
+     * @param modify Boolean value for if the cell was modified during an action
      */
     void setModify(boolean modify) {
         this.modify = modify;
     }
 
     /**
-     * Checks if a cell has been modified.
-     * @return Boolean value to determine if the cell has been modified.
+     * Checks if a cell has been modified
+     * @return Boolean value to determine if the cell has been modified
      */
     boolean getModify() {
         return !modify;
     }
 
     /**
-     * Sets the variables of current cell.
+     * Sets the variables of current cell
      * @param x sets the scale for the x-axis of the cell
      * @param y sets the scale for the y-axis of the cell
      * @param scale scales the x-axis and y-axis accordingly
@@ -65,15 +64,15 @@ public class Cell {
     }
 
     /**
-     * Sets textClass to input text.
-     * @param textClass text to be displayed in this cell.
+     * Sets textClass to input text
+     * @param textClass text to be displayed in this cell
      */
     void setTextClass(Text textClass) {
         this.textClass = textClass;
     }
 
     /**
-     * Swaps contents of two cells.
+     * Swaps contents of two cells
      * @param cell Destination of current cell
      */
     void changeCell(Cell cell) {
@@ -92,8 +91,8 @@ public class Cell {
     }
 
     /**
-     * Adds the value of two cells and merges them together.
-     * @param cell cell to be merged with current cell.
+     * Adds the value of two cells and merges them together
+     * @param cell cell to be merged with current cell
      */
     void adder(Cell cell) {
         cell.getTextClass().setText((cell.getNumber() + this.getNumber()) + "");
@@ -104,8 +103,8 @@ public class Cell {
     }
 
     /**
-     * Sets color of the cell according to the number of the cell.
-     * @param number Number in the cell.
+     * Sets color of the cell according to the number of the cell
+     * @param number Number in the cell
      */
     void setColorByNumber(int number) {
         switch (number) {
@@ -127,6 +126,7 @@ public class Cell {
     }
 
     /**
+     * Gets width of rectangle
      * @return X-axis size of the cell
      */
     double getX() {
@@ -134,6 +134,7 @@ public class Cell {
     }
 
     /**
+     * Gets height of rectangle
      * @return Y-axis size of the cell
      */
     double getY() {
@@ -141,14 +142,16 @@ public class Cell {
     }
 
     /**
-     * @return Int value of the number in the cell.
+     * Gets number in cell
+     * @return Int value of the number in the cell
      */
     int getNumber() {
         return Integer.parseInt(textClass.getText());
     }
 
     /**
-     * @return Text value of current cell.
+     * Gets Text in cell
+     * @return Text value of current cell
      */
     private Text getTextClass() {
         return textClass;

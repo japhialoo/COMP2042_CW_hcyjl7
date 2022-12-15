@@ -18,34 +18,34 @@ import javafx.stage.Stage;
  */
 public class StartGame {
     /**
-     * Width of the window.
+     * Width of the window
      */
     static final int WIDTH = 900;
     /**
-     * Height of the window.
+     * Height of the window
      */
     static final int HEIGHT = 900;
     /**
-     * For users to input their name.
+     * For users to input their name
      */
     @FXML
     TextField name;
     /**
-     * For users to pick color for game theme.
+     * For users to pick color for game theme
      */
     @FXML
     ColorPicker colorPicker = new ColorPicker();
     /**
-     * Slider for user to choose difficulty of the game.
+     * Slider for user to choose difficulty of the game
      */
     @FXML
     Slider difficultySlider;
     /**
-     * Number of Grids to appear of the screen.
+     * Number of Grids to appear of the screen
      */
     static int difficulty = 4;
     /**
-     * To set game scene after user logs in.
+     * To set game scene after user logs in
      */
     GameScene game = new GameScene();
     /**
@@ -53,38 +53,38 @@ public class StartGame {
      */
     private Group gameRoot = new Group();
     /**
-     * Username entered by the user.
+     * Username entered by the user
      */
     public String userName;
     /**
      * Color variable for the background color of the game scene and end scene.
-     * Default color set to the base game's color.
+     * Default color set to the base game's color
      */
     public static Color c = Color.rgb(237, 194, 46);
     /**
-     * Account of the current user playing the game.
+     * Account of the current user playing the game
      */
     Account account;
 
 
     /**
-     * Sets Color variable c to the color chosen by the user.
+     * Sets Color variable c to the color chosen by the user
      */
     public void setColor() {
         c = colorPicker.getValue();
     }
 
     /**
-     * Initiates the Game Root.
-     * @param gameRoot Root of the game scene.
+     * Initiates the Game Root
+     * @param gameRoot Root of the game scene
      */
     public void setGameRoot(Group gameRoot) {
         this.gameRoot = gameRoot;
     }
 
     /**
-     * Initiates and sets the Game Scene when user clicks the "Log In" button in the menu screen.
-     * @param event When user clicks log-in button.
+     * Initiates and sets the Game Scene when user clicks the "Log In" button in the menu screen
+     * @param event When user clicks log-in button
      */
     public void setGameScene(ActionEvent event) {
         userName = name.getText();
@@ -110,7 +110,7 @@ public class StartGame {
     }
 
     /**
-     * Sets difficulty level according to user's input in game from difficulty slider.
+     * Sets difficulty level according to user's input in game from difficulty slider
      */
     public void setDifficulty(){
         int result = (int)difficultySlider.getValue();

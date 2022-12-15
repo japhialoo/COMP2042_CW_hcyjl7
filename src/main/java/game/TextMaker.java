@@ -5,13 +5,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
- * Class that manages text attribute of values in a cell.
+ * Class that manages text attribute of values in a cell
  *
  * @author japhialoo-modified
  */
 class TextMaker {
     /**
-     * Single Instance of TextMaker class.
+     * Single Instance of TextMaker class
      */
     private static TextMaker singleInstance = null;
 
@@ -27,11 +27,11 @@ class TextMaker {
     }
 
     /**
-     * Method to make and set style of the text in the game.
-     * @param input Value to be displayed on the cell.
-     * @param xCell x-axis length of the cell.
-     * @param yCell y-axis length of the cell.
-     * @return Displays the input value on the cell.
+     * Method to make and set style of the text in the game
+     * @param input Value to be displayed on the cell
+     * @param xCell x-axis length of the cell
+     * @param yCell y-axis length of the cell
+     * @return Displays the input value on the cell
      */
     Text madeText(String input, double xCell, double yCell) {
         double fontSize = (3 * GameScene.LENGTH) / 8.0;
@@ -45,7 +45,7 @@ class TextMaker {
 
 
     /**
-     * Swapping values of the first and second cell.
+     * Swapping values of the first and second cell
      * @param first Text of first cell to be swapped
      * @param second Text of second cell to be swapped
      */

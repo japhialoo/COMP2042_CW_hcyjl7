@@ -3,19 +3,19 @@ package game;
 import javafx.scene.paint.Color;
 
 /**
- * Check class for all methods in charge of validating moves and conditions.
+ * Check class for all methods in charge of validating moves and conditions
  *
  * @author japhialoo
  */
 public class Check{
     /**
-     * Boolean value for if cells have moved or not.
+     * Boolean value for if cells have moved or not
      */
     public static boolean moved = false;
 
     /**
-     * Checks if cells have moved.
-     * @return Boolean value for if any cell has moved in the grid.
+     * Checks if cells have moved
+     * @return Boolean value for if any cell has moved in the grid
      */
     public boolean moved() {
         return moved;
@@ -26,7 +26,7 @@ public class Check{
      * @param i Row index of the cell
      * @param j Column index of the cell
      * @param cells 2d array of cells displayed on the grid
-     * @return Boolean value to determine if neighbouring cells have the same number.
+     * @return Boolean value to determine if neighbouring cells have the same number
      */
     public boolean haveSameNumberNearly(int i, int j, Cell[][] cells) {
         if (i < GameScene.n - 1 && j < GameScene.n - 1) {
@@ -40,7 +40,7 @@ public class Check{
     /**
      * Checks if the grid is full and if there are same numbered cells
      * @param cells 2d array of cells displayed on the grid
-     * @return Boolean value to determine if any cells can move.
+     * @return Boolean value to determine if any cells can move
      */
     public boolean canNotMove(Cell[][] cells) {
         for (int i = 0; i < GameScene.n; i++) {
@@ -54,9 +54,9 @@ public class Check{
     }
 
     /**
-     * Checks if the grid has any empty cells.
+     * Checks if the grid has any empty cells
      * @param cells 2D array of cells in the game
-     * @return Boolean value to determine if there are any empty cells in the grid.
+     * @return Boolean value to determine if there are any empty cells in the grid
      */
     public Boolean  haveEmptyCell(Cell[][] cells) {
         for (int i = 0; i < GameScene.n; i++) {
@@ -69,9 +69,9 @@ public class Check{
     }
 
     /**
-     * Checks if cell with value "2048" has appeared in the game.
+     * Checks if cell with value "2048" has appeared in the game
      * @param cells 2D array of cells shown in game
-     * @return True if 2048 is in the grid.
+     * @return True if 2048 is in the grid
      */
     public boolean  have2048(Cell[][] cells) {
         for (int i = 0; i < GameScene.n; i++) {

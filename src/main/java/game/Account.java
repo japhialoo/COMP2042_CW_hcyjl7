@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 /**
- * Class for managing methods associated to player accounts.
+ * Class for managing methods associated to player accounts
  *
  * @author japhialoo-modifed
  */
@@ -18,13 +18,13 @@ public class Account {
      */
     public String userName ;
     /**
-     * Array List of accounts to store all users that have played the game.
+     * Array List of accounts to store all users that have played the game
      */
     public static ArrayList<Account> accounts = new ArrayList<>();
 
     /**
-     * Creates a new account.
-     * @param name Username of new player.
+     * Creates a new account
+     * @param name Username of new player
      */
     public Account(String name) {
         userName = name;
@@ -32,7 +32,7 @@ public class Account {
     }
 
     /**
-     * Adds values to user's score in game.
+     * Adds values to user's score in game
      * @param score Score to be added to the total score
      */
     public void addToScore(long score) {
@@ -41,30 +41,30 @@ public class Account {
 
     /**
      * Gets user's score
-     * @return Score of the account associated to it.
+     * @return Score of the account associated to it
      */
     public long getScore() {
         return score;
     }
 
     /**
-     * Sets score value to the input specified.
-     * @param num Number to set the score as.
+     * Sets score value to the input specified
+     * @param num Number to set the score as
      */
     public void setScore(long num) {score = num;}
 
     /**
      * Gets user's name
-     * @return Username associated to the account being used.
+     * @return Username associated to the account being used
      */
     public String getUserName() {
         return userName;
     }
 
     /**
-     * Checks if an account under userName exists in our file.
+     * Checks if an account under userName exists in our file
      * @param userName Username of current player playing the game
-     * @return Account of the user if it exists within our file if not will return null.
+     * @return Account of the user if it exists within our file if not will return null
      */
     static Account accountExists(String userName){
         for(Account account : accounts){
@@ -79,9 +79,9 @@ public class Account {
     }
 
     /**
-     * Creates a new account and stores it in an Array List of Accounts.
+     * Creates a new account and stores it in an Array List of Accounts
      * @param userName Username of current New Player
-     * @return The new user account that was created.
+     * @return The new user account that was created
      */
     static Account makeNewAccount(String userName){
         Account account = new Account(userName);

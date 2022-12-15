@@ -4,31 +4,31 @@ import java.io.*;
 import java.util.Objects;
 
 /**
- * Holds read and write to file methods.
+ * Holds read and write to file methods
  *
  * @author japhialoo
  */
 public class User implements Serializable{
     /**
-     * Username of user.
+     * Username of user
      */
     public String userName;
     /**
-     * All time high-score of user.
+     * All time high-score of user
      */
     public Long highScore;
 
     @Serial
     private static final long serialVersionUID = 6150078625063920690L;
     /**
-     * File that stores all Usernames and corresponding high scores.
+     * File that stores all Usernames and corresponding high scores
      */
     static final File file = new File("Users.txt");
 
     /**
      * Creating User
-     * @param name Name of user.
-     * @param highScore High Score of user.
+     * @param name Name of user
+     * @param highScore High Score of user
      */
     public User(String name, Long highScore) {
         this.userName = name;
@@ -36,7 +36,7 @@ public class User implements Serializable{
     }
 
     /**
-     * Reads Users from file and stores values in an Array List of Accounts.
+     * Reads Users from file and stores values in an Array List of Accounts
      */
     public static void readFromFile() {
         try (FileInputStream fis = new FileInputStream(file);
@@ -62,7 +62,7 @@ public class User implements Serializable{
     }
 
     /**
-     * Stores all user from an Array list of accounts to local file.
+     * Stores all user from an Array list of accounts to local file
      */
     public static void writeAllToFile() {
         try (FileOutputStream fileOS = new FileOutputStream(file);
