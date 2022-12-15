@@ -116,11 +116,11 @@ public class EndGame {
         root.getChildren().add(highScoreText);
 
         if (Check.darkColor(c)) {
+            text.setFill(Color.WHITE);
             scoreTitle.setFill(Color.WHITE);
             scoreText.setFill(Color.WHITE);
             highScoreTitle.setFill(Color.WHITE);
             highScoreText.setFill(Color.WHITE);
-
         }
 
         Button quitButton = new Button("QUIT");

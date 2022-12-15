@@ -167,6 +167,8 @@ public class GameScene {
         if (Check.darkColor(c)) {
             text.setFill(Color.WHITE);
             scoreText.setFill(Color.WHITE);
+            userText.setFill(Color.WHITE);
+            nameText.setFill(Color.WHITE);
         }
 
         randomFillNumber();
