@@ -5,15 +5,16 @@ ID: 20129351
 
 ## How to compile and run code
 1. Have IntelliJ installed on your device.
-2. On the menu screen, click on open and select the file named LooJaphia_IntelliJ_19 in the same directory as this README.md file.
-3. After you select it, the project will appear.
-4. There will be two directories in the project, one being a _MACOSX folder as I made my program on a Macbook, you can ignore that file.
-5. Click into the directory with the name LooJaphia_IntelliJ_19 and build the project.
-6. An error will pop up if you do not have the proper language level for the project but IntelliJ will resolve the error itself
-7. Click on the run program button.
-8. Click load maven build files pop up on the bottom right of the screen. 
-9. Run the game again, the game should launch promptly. 
-10. Enjoy the game!
+2. Unzip the file named LooJaphia_IntelliJ_19.zip in the project folder located in the same directory as this README.md file.
+3. Launch IntelliJ and on the menu screen, click on open and select the file named LooJaphia_IntelliJ_19 in the same directory as this README.md file.
+4. After you select it, the project will appear.
+5. There will be two directories in the project, one being a _MACOSX folder as I made my program on a Macbook, you can ignore that file.
+6. Click into the directory with the name LooJaphia_IntelliJ_19 and build the project.
+7. An error will pop up if you do not have the proper language level for the project but IntelliJ will resolve the error itself.
+8. Click on the run program button.
+9. Click load maven build files pop up on the bottom right of the screen. 
+10. Run the game again, the game should launch promptly. 
+11. Enjoy the game!
 
 ## JavaDocs path
 "/COMP2042LooJaphia/javadocs/index.html"
