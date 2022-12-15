@@ -32,9 +32,9 @@ public class Account {
     }
 
     /**
-     * When user is able to merge values on the board, the merged value is added to the score.
+     * When user merges values in the game, the merged value is added to the total score the user has obtained so far.
      * Merge value will vary with difficulty level chosen.
-     * Value will be halved in easy mode, remains the same in normal mode, and doubled in hard mode.
+     * Values will be halved in easy mode, remains the same in normal mode, and doubled in hard mode.
      * @param score Score to be added to the total score
      */
     public void addToScore(long score) {
