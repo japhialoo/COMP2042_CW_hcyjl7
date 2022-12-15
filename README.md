@@ -1,19 +1,20 @@
 # Software Maintenance Coursework
 
 Name: Japhia Loo Hyean-Shyn \
-ID: 20129351
+ID: 20129351 \
+Note: MacOS user, therefore there will be extra files when you unzip a file that was compressed by MacOS device. They will be named _MACOSX, please ignore them.
 
 ## How to compile and run code
 1. Have IntelliJ installed on your device.
 2. Unzip the file named LooJaphia_IntelliJ_19.zip in the project folder located in the same directory as this README.md file.
 3. Launch IntelliJ and on the menu screen, click on open and select the file named LooJaphia_IntelliJ_19 in the same directory as this README.md file.
 4. After you select it, the project will appear.
-5. There will be two directories in the project, one being a _MACOSX folder as I made my program on a Macbook, you can ignore that file.
+5. There will be two directories in the project, one being a _MACOSX folder, you can ignore that file.
 6. Click into the directory with the name LooJaphia_IntelliJ_19 and build the project.
 7. An error will pop up if you do not have the proper language level for the project but IntelliJ will resolve the error itself.
 8. Click on the run program button.
 9. Click load maven build files pop up on the bottom right of the screen. 
-10. Run the game again, the game should launch promptly. 
+10. Run the game again.
 11. Enjoy the game!
 
 ## JavaDocs path
@@ -25,7 +26,7 @@ ID: 20129351
 3. Added permanent high-score list stored in file that the program will retrieve according to user playing.
 4. Added retry and menu button at the end of the game.
 5. Bug fixes for random values spawning when no cells have moved or merged.
-6. Bug fixes for values merging in cases of 2 2 2 2 merging to create 8 0 0 0 instead of 4 4 0 0 
+6. Bug fixes for values double merging values in a single move. 
 7. Pop-up window for score when player runs out of moves in game.
 8. Bug fixes for cell overflowing out of the cell after hitting value 1024 and above.
 9. Added a logo to the game that will be visible when user launches the program.
